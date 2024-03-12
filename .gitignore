@@ -1,4 +1,6 @@
+.fvm/flutter_sdk
 # Miscellaneous
+
 *.class
 *.log
 *.pyc
@@ -42,3 +44,11 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+#ios build files (app thining)
+*.ipa
+.App Thinning Size Report.txt
+.app-thinning.plist
+.DistributionSummary.plist
+.ExportOptions.plist
+
