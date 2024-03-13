@@ -1,6 +1,8 @@
 import 'package:chat_task/screens/main_screen.dart';
+import 'package:chat_task/service/local_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
 
 import 'firebase_options.dart';
 
@@ -9,6 +11,10 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await Hive.initFlutter();
+  await Hive.openBox('userBox');
+
+  initializeUsers();
   runApp(const MyApp());
 }
 
