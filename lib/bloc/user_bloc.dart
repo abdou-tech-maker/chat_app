@@ -17,7 +17,7 @@ class UsersBloc extends Bloc<UserEvent, UserState> {
   }
 
   void _onLoadUsers(LoadUsers event, Emitter<UserState> emit) {
-    log('LoadUsers event received');
+    log('LoadUsers event');
     emit(UsersLoading());
 
     _usersSubscription?.cancel();
@@ -33,7 +33,7 @@ class UsersBloc extends Bloc<UserEvent, UserState> {
   }
 
   void _onUsersUpdatedEvent(UsersUpdated event, Emitter<UserState> emit) {
-    log('UsersUpdated event received with ${event.users.length} users');
+    log('UsersUpdated event received : ${event.users.length} users');
     emit(UsersLoaded(event.users));
   }
 

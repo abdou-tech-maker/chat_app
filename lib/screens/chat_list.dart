@@ -1,3 +1,4 @@
+import 'package:chat_task/helpers/user_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -5,18 +6,17 @@ import '../bloc/events/user_event.dart';
 import '../bloc/states/user_state.dart';
 import '../bloc/user_bloc.dart';
 
-class FirstUser extends StatefulWidget {
-  const FirstUser({super.key});
-
+class ChatList extends StatefulWidget {
+  const ChatList({super.key, required this.currentUserId});
+  final String currentUserId;
   @override
-  State<FirstUser> createState() => _FirstUserState();
+  State<ChatList> createState() => _ChatListState();
 }
 
-class _FirstUserState extends State<FirstUser> {
+class _ChatListState extends State<ChatList> {
   @override
   void initState() {
     super.initState();
-    // context.read<UsersBloc>().add(const UserEvent.loadUsers());
     BlocProvider.of<UsersBloc>(context).add(const LoadUsers());
   }
 
@@ -32,22 +32,21 @@ class _FirstUserState extends State<FirstUser> {
             if (state is UsersLoading) {
               return const Center(child: CircularProgressIndicator());
             } else if (state is UsersLoaded) {
-              final users = state.users;
-              return ListView.builder(
+              final users = state.users
+                  .where((user) => user.uid != widget.currentUserId)
+                  .toList();
+              return ListView.separated(
+                separatorBuilder: (context, index) {
+                  return const SizedBox();
+                },
+                physics: const BouncingScrollPhysics(),
                 itemCount: users.length,
                 itemBuilder: (context, index) {
                   final user = users[index];
-                  return ListTile(
-                    leading: CircleAvatar(
-                      backgroundImage: NetworkImage(user.imageUrl ?? ""),
-                    ),
-                    title: Text(user.name ?? ""),
-                    subtitle: Text(user.email ?? ""),
-                  );
+                  return UserItem(user: user);
                 },
               );
             } else if (state is UsersLoadFailure) {
-              // Display an error message
               return const Center(child: Text('Failed to load users.'));
             } else {
               return const Center(child: Text('Unknown state.'));

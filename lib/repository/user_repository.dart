@@ -8,6 +8,7 @@ class UserRepository {
   Stream<List<User>> getUsers() {
     return _firestore
         .collection('User')
+        .orderBy('lastSeen', descending: true)
         .snapshots(includeMetadataChanges: true)
         .map((snapshot) => snapshot.docs.map((doc) {
               var data = doc.data();
