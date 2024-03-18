@@ -7,11 +7,22 @@ Future<void> initializeUsers() async {
 
   if (box.isEmpty) {
     final user1 = User(
-      id: "user1",
+      uid: '1',
       name: "User 1",
+      email: 'user1@gmail.com',
+      imageUrl: 'https://i.pravatar.cc/150?img=11',
+      isOnline: true,
+      lastSeen: DateTime.now(),
     );
 
-    final user2 = User(id: "user2", name: "User 2");
+    final user2 = User(
+      uid: '2',
+      name: "User 2",
+      email: 'user2@gmail.com',
+      imageUrl: 'https://i.pravatar.cc/150?img=5',
+      isOnline: true,
+      lastSeen: DateTime.now(),
+    );
 
     await box.add(user1);
     await box.add(user2);
