@@ -1,10 +1,9 @@
-import 'package:chat_task/helpers/user_item.dart';
+import 'package:chat_task/bloc/chat_bloc.dart';
+import 'package:chat_task/bloc/states/chat_states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/events/user_event.dart';
-import '../bloc/states/user_state.dart';
-import '../bloc/user_bloc.dart';
 
 class ChatList extends StatefulWidget {
   const ChatList({super.key, required this.currentUserId});
@@ -17,7 +16,8 @@ class _ChatListState extends State<ChatList> {
   @override
   void initState() {
     super.initState();
-    BlocProvider.of<UsersBloc>(context).add(const LoadUsers());
+    BlocProvider.of<ChatBloc>(context)
+        .add(UserEvent.chatList(widget.currentUserId));
   }
 
   @override
@@ -27,27 +27,26 @@ class _ChatListState extends State<ChatList> {
           onPressed: () {},
           child: const Icon(Icons.add),
         ),
-        body: BlocBuilder<UsersBloc, UserState>(
+        body: BlocBuilder<ChatBloc, ChatState>(
           builder: (context, state) {
-            if (state is UsersLoading) {
+            if (state is ChatLoading) {
               return const Center(child: CircularProgressIndicator());
-            } else if (state is UsersLoaded) {
-              final users = state.users
-                  .where((user) => user.uid != widget.currentUserId)
-                  .toList();
+            } else if (state is ChatLoaded) {
+              final chats = state.chats;
+
               return ListView.separated(
                 separatorBuilder: (context, index) {
                   return const SizedBox();
                 },
                 physics: const BouncingScrollPhysics(),
-                itemCount: users.length,
+                itemCount: chats.length,
                 itemBuilder: (context, index) {
-                  final user = users[index];
-                  return UserItem(user: user);
+                  final chat = chats[index];
+                  return Text(chat.title);
                 },
               );
-            } else if (state is UsersLoadFailure) {
-              return const Center(child: Text('Failed to load users.'));
+            } else if (state is ChatLoadFailure) {
+              return const Center(child: Text('Failed to load Chat.'));
             } else {
               return const Center(child: Text('Unknown state.'));
             }

@@ -24,43 +24,48 @@ const Color greenColor = Color(0xFF16A34A);
 const Color navIconColor = Color(0xf04986c5);
 List<ChatMessage> dummyChatMessages = [
   ChatMessage(
-    id: "1",
+    recieverId: "1",
     senderId: "user_1",
     text: "Hello! How are you today?",
     time:
         Timestamp.fromDate(DateTime.now().subtract(const Duration(minutes: 5))),
-    isMe: false, // Assuming this message is from the other user
+    isMe: false,
+    status: true,
   ),
   ChatMessage(
-    id: "2",
+    recieverId: "2",
     senderId: "user_2",
     text: "Hi! I'm good, thanks for asking. And you?",
     time:
         Timestamp.fromDate(DateTime.now().subtract(const Duration(minutes: 4))),
-    isMe: true, // Assuming this message is from the current user
+    isMe: true,
+    status: true,
   ),
   ChatMessage(
-    id: "3",
+    recieverId: "3",
     senderId: "user_1",
     text: "I'm great, thanks! Did you complete the project?",
     time:
         Timestamp.fromDate(DateTime.now().subtract(const Duration(minutes: 4))),
     isMe: false,
+    status: true,
   ),
   ChatMessage(
-    id: "4",
+    recieverId: "4",
     senderId: "user_2",
     text: "Yes, I sent it over for review. Fingers crossed!",
     time:
         Timestamp.fromDate(DateTime.now().subtract(const Duration(minutes: 4))),
     isMe: true,
+    status: true,
   ),
   ChatMessage(
-    id: "5",
+    recieverId: "5",
     senderId: "user_1",
     text: "Awesome! Let me know how it goes.",
     time:
         Timestamp.fromDate(DateTime.now().subtract(const Duration(minutes: 4))),
     isMe: false,
+    status: true,
   ),
 ];

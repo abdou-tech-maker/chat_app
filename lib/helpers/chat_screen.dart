@@ -1,6 +1,5 @@
 import 'dart:developer';
 
-import 'package:chat_task/helpers/chat_messages.dart';
 import 'package:chat_task/helpers/chat_text_field.dart';
 import 'package:chat_task/helpers/user_header.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -20,11 +19,12 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
   void _handleMessageSend(String message) {
     dummyChatMessages.add(ChatMessage(
-      id: "6",
+      recieverId: "6",
       senderId: "user_2",
       text: message,
       time: Timestamp.fromDate(DateTime.now()),
       isMe: true,
+      status: true,
     ));
     log("Message to send: $message");
     setState(() {});
@@ -40,7 +40,7 @@ class _ChatScreenState extends State<ChatScreen> {
           padding: const EdgeInsets.only(top: 12.0, left: 12.0, right: 12.0),
           child: Column(
             children: [
-              MessageList(recieverId: widget.user.uid),
+              // MessageList(recieverId: widget.user.uid),
               ChatTextFieldWidget(
                 hint: "Send Message",
                 onChange: _handleMessageSend,
