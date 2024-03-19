@@ -22,7 +22,7 @@ class UserHeader extends StatelessWidget implements PreferredSizeWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             CircleAvatar(
-              backgroundImage: NetworkImage(user.imageUrl ?? ""),
+              backgroundImage: NetworkImage(user.imageUrl),
             ),
             const SizedBox(
               width: 10,
@@ -31,19 +31,17 @@ class UserHeader extends StatelessWidget implements PreferredSizeWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  user.name ?? "",
+                  user.name,
                   style: const TextStyle(
                       fontSize: 22,
                       color: Colors.black,
                       fontWeight: FontWeight.bold),
                 ),
                 Text(
-                  user.isOnline != null
-                      ? (user.isOnline! ? "Online" : "Offline")
-                      : "Offline",
+                  user.isOnline ? "Online" : "Offline",
                   style: TextStyle(
                       fontSize: 12,
-                      color: user.isOnline! ? Colors.green : Colors.grey,
+                      color: user.isOnline ? Colors.green : Colors.grey,
                       fontWeight: FontWeight.bold),
                 ),
               ],

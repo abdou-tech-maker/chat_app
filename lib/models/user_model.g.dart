@@ -17,12 +17,12 @@ class UserAdapter extends TypeAdapter<User> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return User(
-      uid: fields[0] as String?,
-      name: fields[1] as String?,
-      email: fields[2] as String?,
-      imageUrl: fields[3] as String?,
-      lastSeen: fields[4] as DateTime?,
-      isOnline: fields[5] as bool?,
+      uid: fields[0] as String,
+      name: fields[1] as String,
+      email: fields[2] as String,
+      imageUrl: fields[3] as String,
+      lastSeen: fields[4] as DateTime,
+      isOnline: fields[5] as bool,
     );
   }
 
@@ -60,14 +60,12 @@ class UserAdapter extends TypeAdapter<User> {
 // **************************************************************************
 
 User _$UserFromJson(Map<String, dynamic> json) => User(
-      uid: json['uid'] as String?,
-      name: json['name'] as String?,
-      email: json['email'] as String?,
-      imageUrl: json['imageUrl'] as String?,
-      lastSeen: json['lastSeen'] == null
-          ? null
-          : DateTime.parse(json['lastSeen'] as String),
-      isOnline: json['isOnline'] as bool?,
+      uid: json['uid'] as String,
+      name: json['name'] as String,
+      email: json['email'] as String,
+      imageUrl: json['imageUrl'] as String,
+      lastSeen: DateTime.parse(json['lastSeen'] as String),
+      isOnline: json['isOnline'] as bool,
     );
 
 Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
@@ -75,6 +73,6 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'name': instance.name,
       'email': instance.email,
       'imageUrl': instance.imageUrl,
-      'lastSeen': instance.lastSeen?.toIso8601String(),
+      'lastSeen': instance.lastSeen.toIso8601String(),
       'isOnline': instance.isOnline,
     };

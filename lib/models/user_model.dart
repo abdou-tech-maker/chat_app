@@ -8,18 +8,18 @@ part 'user_model.g.dart';
 @HiveType(typeId: 0)
 class User extends Equatable {
   @HiveField(0)
-  final String? uid;
+  final String uid;
 
   @HiveField(1)
-  final String? name;
+  final String name;
   @HiveField(2)
-  final String? email;
+  final String email;
   @HiveField(3)
-  final String? imageUrl;
+  final String imageUrl;
   @HiveField(4)
-  final DateTime? lastSeen;
+  final DateTime lastSeen;
   @HiveField(5)
-  final bool? isOnline;
+  final bool isOnline;
   const User({
     required this.uid,
     required this.name,

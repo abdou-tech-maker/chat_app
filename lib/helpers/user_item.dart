@@ -25,7 +25,7 @@ class UserItem extends StatelessWidget {
         leading: Stack(
           children: [
             CircleAvatar(
-              backgroundImage: NetworkImage(user.imageUrl ?? ""),
+              backgroundImage: NetworkImage(user.imageUrl),
             ),
             Positioned(
               bottom: 0,
@@ -34,18 +34,16 @@ class UserItem extends StatelessWidget {
                 width: 10,
                 height: 10,
                 decoration: BoxDecoration(
-                  color: user.isOnline != null
-                      ? (user.isOnline! ? Colors.green : Colors.red)
-                      : Colors.grey,
+                  color: user.isOnline ? Colors.green : Colors.grey,
                   shape: BoxShape.circle,
                 ),
               ),
             ),
           ],
         ),
-        title: Text(user.name ?? "",
+        title: Text(user.name,
             style: const TextStyle(fontWeight: FontWeight.bold)),
-        subtitle: Text(timeago.format(user.lastSeen ?? DateTime.now())),
+        subtitle: Text(timeago.format(user.lastSeen)),
       ),
     );
   }
