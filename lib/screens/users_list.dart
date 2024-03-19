@@ -1,24 +1,24 @@
-import 'package:chat_task/bloc/chat_bloc.dart';
 import 'package:chat_task/bloc/states/chat_states.dart';
-import 'package:chat_task/helpers/chat_item.dart';
+import 'package:chat_task/bloc/states/user_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/events/user_event.dart';
+import '../bloc/user_bloc.dart';
+import '../helpers/user_item.dart';
 
-class ChatList extends StatefulWidget {
-  const ChatList({super.key, required this.currentUserId});
+class UsersList extends StatefulWidget {
+  const UsersList({super.key, required this.currentUserId});
   final String currentUserId;
   @override
-  State<ChatList> createState() => _ChatListState();
+  State<UsersList> createState() => _UsersListState();
 }
 
-class _ChatListState extends State<ChatList> {
+class _UsersListState extends State<UsersList> {
   @override
   void initState() {
     super.initState();
-    BlocProvider.of<ChatBloc>(context)
-        .add(UserEvent.chatList(widget.currentUserId));
+    BlocProvider.of<UsersBloc>(context).add(const UserEvent.loadUsers());
   }
 
   @override
@@ -28,24 +28,23 @@ class _ChatListState extends State<ChatList> {
           onPressed: () {},
           child: const Icon(Icons.add),
         ),
-        body: BlocBuilder<ChatBloc, ChatState>(
+        body: BlocBuilder<UsersBloc, UserState>(
           builder: (context, state) {
-            if (state is ChatLoading) {
+            if (state is UsersLoading) {
               return const Center(child: CircularProgressIndicator());
-            } else if (state is ChatLoaded) {
-              final chats = state.chats;
+            } else if (state is UsersLoaded) {
+              final users = state.users;
 
               return ListView.separated(
                 separatorBuilder: (context, index) {
                   return const SizedBox();
                 },
                 physics: const BouncingScrollPhysics(),
-                itemCount: chats.length,
+                itemCount: users.length,
                 itemBuilder: (context, index) {
-                  final chat = chats[index];
-                  return ChatItem(
-                    chat: chat,
-                    currentUserId: widget.currentUserId,
+                  final user = users[index];
+                  return UserItem(
+                    user: user,
                   );
                 },
               );

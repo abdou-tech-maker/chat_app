@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -31,4 +32,16 @@ class User extends Equatable {
 
   @override
   List<Object?> get props => [uid, name, email, imageUrl, isOnline, lastSeen];
+
+  factory User.fromFirestore(DocumentSnapshot doc) {
+    Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+    return User(
+      uid: doc.id,
+      name: data['name'] ?? '',
+      email: data['email'] ?? '',
+      imageUrl: data['imageUrl'] ?? '',
+      lastSeen: (data['lastSeen'] as Timestamp).toDate(),
+      isOnline: data['isOnline'] ?? false,
+    );
+  }
 }

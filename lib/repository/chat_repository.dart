@@ -6,25 +6,25 @@ import '../models/chatMessage_model.dart';
 class ChatRepository {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  Stream<List<ChatMessage>> getChat(String chatId, String currentUserId) {
-    return _firestore
-        .collection('chats')
-        .doc(chatId)
-        .collection('messages')
-        .orderBy('timestamp', descending: true)
-        .snapshots(includeMetadataChanges: true)
-        .map((snapshot) => snapshot.docs.map((doc) {
-              var data = doc.data();
-              return ChatMessage(
-                recieverId: data['recieverId'],
-                senderId: data['senderId'],
-                text: data['text'],
-                time: data['time'],
-                isMe: data['isMe'] == currentUserId,
-                status: data['status'],
-              );
-            }).toList());
-  }
+  // Stream<List<ChatMessage>> getChat(String chatId, String currentUserId) {
+  //   return _firestore
+  //       .collection('chats')
+  //       .doc(chatId)
+  //       .collection('messages')
+  //       .orderBy('timestamp', descending: true)
+  //       .snapshots(includeMetadataChanges: true)
+  //       .map((snapshot) => snapshot.docs.map((doc) {
+  //             var data = doc.data();
+  //             return ChatMessage(
+  //               recieverId: data['recieverId'],
+  //               senderId: data['senderId'],
+  //               text: data['text'],
+  //               time: data['time'],
+  //               isMe: data['isMe'] == currentUserId,
+  //               status: data['status'],
+  //             );
+  //           }).toList());
+  // }
 
   Stream<List<ChatModel>> getUserChatList(String currentUserId) {
     return _firestore
@@ -35,11 +35,12 @@ class ChatRepository {
         .map((snapshot) => snapshot.docs.map((doc) {
               var data = doc.data();
               return ChatModel(
+                id: doc.id,
                 title: data['title'],
                 lastMessageTime: data['lastMessageTime'],
                 messages: [],
-                unreadMessagesCount: data['unReadMessageCount'],
-                participants: data['participants'],
+                unreadMessagesCount: data['unReadMessageCount'] as int? ?? 0,
+                participants: List<String>.from(data['participants']),
               );
             }).toList());
   }

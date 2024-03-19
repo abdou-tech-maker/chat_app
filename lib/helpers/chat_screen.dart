@@ -10,8 +10,9 @@ import '../models/chatMessage_model.dart';
 import '../models/user_model.dart';
 
 class ChatScreen extends StatefulWidget {
-  const ChatScreen({super.key, required this.user});
+  const ChatScreen({super.key, required this.user, required this.chatId});
   final User user;
+  final String chatId;
   @override
   State<ChatScreen> createState() => _ChatScreenState();
 }
@@ -40,7 +41,7 @@ class _ChatScreenState extends State<ChatScreen> {
           padding: const EdgeInsets.only(top: 12.0, left: 12.0, right: 12.0),
           child: Column(
             children: [
-              // MessageList(recieverId: widget.user.uid),
+              MessageList(recieverId: widget.user.uid),
               ChatTextFieldWidget(
                 hint: "Send Message",
                 onChange: _handleMessageSend,

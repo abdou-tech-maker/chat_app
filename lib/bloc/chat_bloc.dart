@@ -19,7 +19,7 @@ class ChatBloc extends Bloc<UserEvent, ChatState> {
   }
 
   void _onGetChat(GetListChat event, Emitter<ChatState> emit) {
-    log('LoadUsers event');
+    log('Load Chats event');
     emit(ChatLoading());
     _chatSubscription?.cancel();
     _chatSubscription = chatRepository
