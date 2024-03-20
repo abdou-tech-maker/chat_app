@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:chat_task/repository/chat_repository.dart';
 import 'package:chat_task/repository/user_repository.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -21,26 +22,29 @@ class ChatItem extends StatefulWidget {
 
 class _ChatItemState extends State<ChatItem> {
   UserRepository userRepository = UserRepository();
+  ChatRepository chatRepository = ChatRepository();
   @override
   void initState() {
     super.initState();
-    log("${widget.chat.unreadMessagesCount}  ${widget.chat.title}");
   }
 
   @override
   Widget build(BuildContext context) {
+    int userIndex = int.parse(widget.currentUserId) - 1;
+    int unreadCount = widget.chat.unreadMessagesCount[userIndex];
+
     return ListTile(
       title: Text(
         widget.chat.title,
         style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
       ),
       subtitle: Text(timeago.format(widget.chat.lastMessageTime.toDate())),
-      trailing: widget.chat.unreadMessagesCount > 0
+      trailing: unreadCount > 0
           ? CircleAvatar(
               radius: 12,
               backgroundColor: Colors.red,
               foregroundColor: Colors.white,
-              child: Text(widget.chat.unreadMessagesCount.toString()),
+              child: Text(unreadCount.toString()),
             )
           : const SizedBox(width: 24, height: 24),
       onTap: () async {

@@ -34,6 +34,7 @@ class _MessageListState extends State<MessageList> {
         } else if (state is MessageLoaded) {
           return Expanded(
             child: ListView.builder(
+              reverse: true,
               itemCount: state.messages.length,
               itemBuilder: (context, index) {
                 final message = state.messages[index];

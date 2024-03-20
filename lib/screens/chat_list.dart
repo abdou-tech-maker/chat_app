@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:chat_task/bloc/chat_bloc.dart';
 import 'package:chat_task/bloc/states/chat_states.dart';
 import 'package:chat_task/helpers/chat_item.dart';
+import 'package:chat_task/repository/chat_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,6 +17,7 @@ class ChatList extends StatefulWidget {
 }
 
 class _ChatListState extends State<ChatList> {
+  ChatRepository chatRepository = ChatRepository();
   @override
   void initState() {
     super.initState();
@@ -27,7 +29,42 @@ class _ChatListState extends State<ChatList> {
   Widget build(BuildContext context) {
     return Scaffold(
         floatingActionButton: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                String chatTitle = "";
+
+                return AlertDialog(
+                  title: const Text("Create New Chat"),
+                  content: TextField(
+                    onChanged: (value) {
+                      chatTitle = value;
+                    },
+                    decoration:
+                        const InputDecoration(hintText: "Enter Chat Title"),
+                  ),
+                  actions: <Widget>[
+                    TextButton(
+                      child: const Text("Cancel"),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                    TextButton(
+                      child: const Text("Create"),
+                      onPressed: () {
+                        if (chatTitle.isNotEmpty) {
+                          chatRepository.createNewChat(["1", "2"], chatTitle);
+                          Navigator.of(context).pop();
+                        }
+                      },
+                    ),
+                  ],
+                );
+              },
+            );
+          },
           child: const Icon(Icons.add),
         ),
         body: BlocBuilder<ChatBloc, ChatState>(

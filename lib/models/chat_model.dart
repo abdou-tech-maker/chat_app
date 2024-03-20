@@ -7,7 +7,7 @@ class ChatModel {
   final List<String> participants;
   final Timestamp lastMessageTime;
   final List<ChatMessage> messages;
-  final int unreadMessagesCount;
+  final List<int> unreadMessagesCount;
 
   ChatModel(
       {required this.id,

@@ -13,7 +13,7 @@ class ChatRepository {
         .collection('chats')
         .doc(chatId)
         .collection('messages')
-        .orderBy('time', descending: false)
+        .orderBy('time', descending: true)
         .snapshots()
         .map((snapshot) => snapshot.docs.map((doc) {
               return ChatMessage.fromFirestore(doc);
@@ -37,7 +37,7 @@ class ChatRepository {
                 title: data['title'],
                 lastMessageTime: data['lastMessageTime'],
                 messages: [],
-                unreadMessagesCount: data['unReadMessageCount'] as int? ?? 0,
+                unreadMessagesCount: List<int>.from(data['unReadMessageCount']),
                 participants: List<String>.from(data['participants']),
               );
             }).toList());
@@ -61,8 +61,19 @@ class ChatRepository {
       'status': false
     });
 
+    int indexToUpdate = senderId == "1" ? 1 : 0;
+    DocumentSnapshot chatDocSnapshot = await chatDocument.get();
+    List<dynamic> currentUnreadMessageCount =
+        chatDocSnapshot.get('unReadMessageCount') as List<dynamic>;
+
+    List<int> newUnreadMessageCount = List<int>.from(currentUnreadMessageCount);
+    if (indexToUpdate >= 0 && indexToUpdate < newUnreadMessageCount.length) {
+      newUnreadMessageCount[indexToUpdate] += 1;
+    }
+
     await chatDocument.update({
       'lastMessageTime': Timestamp.now(),
+      'unReadMessageCount': newUnreadMessageCount,
     });
   }
 
@@ -73,7 +84,37 @@ class ChatRepository {
       'participants': participantIds,
       'title': title,
       'lastMessageTime': Timestamp.now(),
-      'unreadMessageCount': 0,
+      'unReadMessageCount': [0, 0],
+      'messages': [],
     });
+  }
+
+  Future<void> resetUnreadMessageCount(String chatId, int userIndex) async {
+    var chatDocRef = FirebaseFirestore.instance.collection('chats').doc(chatId);
+
+    var chatDocSnapshot = await chatDocRef.get();
+    var data = chatDocSnapshot.data();
+
+    if (data != null) {
+      List<int> unreadCounts;
+      if (data['unReadMessageCount'] != null) {
+        unreadCounts =
+            List<int>.from(data['unReadMessageCount'] as List<dynamic>);
+
+        log("unReadCounts: $unreadCounts");
+      } else {
+        unreadCounts = [0, 0];
+      }
+
+      if (unreadCounts.length > userIndex) {
+        unreadCounts[userIndex] = 0;
+
+        await chatDocRef.update({'unReadMessageCount': unreadCounts});
+      } else {
+        log("Error: unreadMessageCount array does not have the expected number of elements.");
+      }
+    } else {
+      log("Error: Chat document data is null.");
+    }
   }
 }

@@ -7,7 +7,6 @@ class ChatMessage {
   final String senderId;
   final String text;
   final Timestamp time;
-  final bool isMe;
   final bool status;
 
   ChatMessage(
@@ -15,7 +14,6 @@ class ChatMessage {
       required this.senderId,
       required this.text,
       required this.time,
-      required this.isMe,
       required this.status});
   factory ChatMessage.fromJson(Map<String, dynamic> json) {
     return ChatMessage(
@@ -23,7 +21,6 @@ class ChatMessage {
       senderId: json['senderId'],
       text: json['text'],
       time: json['time'],
-      isMe: json['isMe'],
       status: json['status'],
     );
   }
@@ -34,7 +31,6 @@ class ChatMessage {
       'senderrecieverId': senderId,
       'text': text,
       'time': time,
-      'isMe': isMe,
       "status": status,
     };
   }
@@ -44,7 +40,6 @@ class ChatMessage {
     String? senderrecieverId,
     String? text,
     Timestamp? time,
-    bool? isMe,
     bool? status,
   }) {
     return ChatMessage(
@@ -52,7 +47,6 @@ class ChatMessage {
       senderId: senderrecieverId ?? senderId,
       text: text ?? this.text,
       time: time ?? this.time,
-      isMe: isMe ?? this.isMe,
       status: status ?? this.status,
     );
   }
@@ -60,7 +54,6 @@ class ChatMessage {
   factory ChatMessage.fromFirestore(DocumentSnapshot doc) {
     Map data = doc.data() as Map<String, dynamic>;
     return ChatMessage(
-      isMe: data['isMe'],
       recieverId: data['recieverId'],
       senderId: data['senderId'],
       status: data['status'],

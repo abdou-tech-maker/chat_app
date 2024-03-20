@@ -1,6 +1,7 @@
 import 'package:chat_task/bloc/message_bloc.dart';
 import 'package:chat_task/helpers/chat_text_field.dart';
 import 'package:chat_task/helpers/user_header.dart';
+import 'package:chat_task/repository/chat_repository.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,6 +25,7 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
+  ChatRepository chatRepository = ChatRepository();
   void _handleMessageSend(String message) {
     if (message.isNotEmpty) {
       ChatMessage newMessage = ChatMessage(
@@ -31,20 +33,26 @@ class _ChatScreenState extends State<ChatScreen> {
         recieverId: widget.user.uid,
         text: message,
         time: Timestamp.now(),
-        isMe: true,
         status: true,
       );
       BlocProvider.of<MessageBloc>(context).add(UserEvent.sendMessage(
           widget.chatId, widget.currentUserId, widget.user.uid, newMessage));
-      setState(() {});
     }
+  }
+
+  void resetUnreadMessages() async {
+    int userIndex = int.parse(widget.currentUserId) - 1;
+
+    await chatRepository.resetUnreadMessageCount(widget.chatId, userIndex);
   }
 
   @override
   void initState() {
     super.initState();
+
     BlocProvider.of<MessageBloc>(context)
         .add(UserEvent.getMessages(widget.chatId, widget.user.uid));
+    resetUnreadMessages();
   }
 
   @override
