@@ -56,4 +56,16 @@ class ChatMessage {
       status: status ?? this.status,
     );
   }
+
+  factory ChatMessage.fromFirestore(DocumentSnapshot doc) {
+    Map data = doc.data() as Map<String, dynamic>;
+    return ChatMessage(
+      isMe: data['isMe'],
+      recieverId: data['recieverId'],
+      senderId: data['senderId'],
+      status: data['status'],
+      text: data['text'],
+      time: data['time'],
+    );
+  }
 }

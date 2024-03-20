@@ -21,7 +21,8 @@ mixin _$UserEvent {
     required TResult Function() loadUsers,
     required TResult Function(List<User> users) usersUpdated,
     required TResult Function() distract,
-    required TResult Function(String chatId, String senderId) getChat,
+    required TResult Function(String chatId, String senderId) getMessages,
+    required TResult Function(List<ChatMessage> messages) messgesUpdated,
     required TResult Function(String currentUserId) chatList,
     required TResult Function(List<ChatModel> chats) chatsUpdated,
   }) =>
@@ -31,7 +32,8 @@ mixin _$UserEvent {
     TResult? Function()? loadUsers,
     TResult? Function(List<User> users)? usersUpdated,
     TResult? Function()? distract,
-    TResult? Function(String chatId, String senderId)? getChat,
+    TResult? Function(String chatId, String senderId)? getMessages,
+    TResult? Function(List<ChatMessage> messages)? messgesUpdated,
     TResult? Function(String currentUserId)? chatList,
     TResult? Function(List<ChatModel> chats)? chatsUpdated,
   }) =>
@@ -41,7 +43,8 @@ mixin _$UserEvent {
     TResult Function()? loadUsers,
     TResult Function(List<User> users)? usersUpdated,
     TResult Function()? distract,
-    TResult Function(String chatId, String senderId)? getChat,
+    TResult Function(String chatId, String senderId)? getMessages,
+    TResult Function(List<ChatMessage> messages)? messgesUpdated,
     TResult Function(String currentUserId)? chatList,
     TResult Function(List<ChatModel> chats)? chatsUpdated,
     required TResult orElse(),
@@ -52,7 +55,8 @@ mixin _$UserEvent {
     required TResult Function(LoadUsers value) loadUsers,
     required TResult Function(UsersUpdated value) usersUpdated,
     required TResult Function(Distract value) distract,
-    required TResult Function(GetChat value) getChat,
+    required TResult Function(GetMessages value) getMessages,
+    required TResult Function(MessageUpdated value) messgesUpdated,
     required TResult Function(GetListChat value) chatList,
     required TResult Function(ChatsUpdated value) chatsUpdated,
   }) =>
@@ -62,7 +66,8 @@ mixin _$UserEvent {
     TResult? Function(LoadUsers value)? loadUsers,
     TResult? Function(UsersUpdated value)? usersUpdated,
     TResult? Function(Distract value)? distract,
-    TResult? Function(GetChat value)? getChat,
+    TResult? Function(GetMessages value)? getMessages,
+    TResult? Function(MessageUpdated value)? messgesUpdated,
     TResult? Function(GetListChat value)? chatList,
     TResult? Function(ChatsUpdated value)? chatsUpdated,
   }) =>
@@ -72,7 +77,8 @@ mixin _$UserEvent {
     TResult Function(LoadUsers value)? loadUsers,
     TResult Function(UsersUpdated value)? usersUpdated,
     TResult Function(Distract value)? distract,
-    TResult Function(GetChat value)? getChat,
+    TResult Function(GetMessages value)? getMessages,
+    TResult Function(MessageUpdated value)? messgesUpdated,
     TResult Function(GetListChat value)? chatList,
     TResult Function(ChatsUpdated value)? chatsUpdated,
     required TResult orElse(),
@@ -138,7 +144,8 @@ class _$LoadUsersImpl implements LoadUsers {
     required TResult Function() loadUsers,
     required TResult Function(List<User> users) usersUpdated,
     required TResult Function() distract,
-    required TResult Function(String chatId, String senderId) getChat,
+    required TResult Function(String chatId, String senderId) getMessages,
+    required TResult Function(List<ChatMessage> messages) messgesUpdated,
     required TResult Function(String currentUserId) chatList,
     required TResult Function(List<ChatModel> chats) chatsUpdated,
   }) {
@@ -151,7 +158,8 @@ class _$LoadUsersImpl implements LoadUsers {
     TResult? Function()? loadUsers,
     TResult? Function(List<User> users)? usersUpdated,
     TResult? Function()? distract,
-    TResult? Function(String chatId, String senderId)? getChat,
+    TResult? Function(String chatId, String senderId)? getMessages,
+    TResult? Function(List<ChatMessage> messages)? messgesUpdated,
     TResult? Function(String currentUserId)? chatList,
     TResult? Function(List<ChatModel> chats)? chatsUpdated,
   }) {
@@ -164,7 +172,8 @@ class _$LoadUsersImpl implements LoadUsers {
     TResult Function()? loadUsers,
     TResult Function(List<User> users)? usersUpdated,
     TResult Function()? distract,
-    TResult Function(String chatId, String senderId)? getChat,
+    TResult Function(String chatId, String senderId)? getMessages,
+    TResult Function(List<ChatMessage> messages)? messgesUpdated,
     TResult Function(String currentUserId)? chatList,
     TResult Function(List<ChatModel> chats)? chatsUpdated,
     required TResult orElse(),
@@ -181,7 +190,8 @@ class _$LoadUsersImpl implements LoadUsers {
     required TResult Function(LoadUsers value) loadUsers,
     required TResult Function(UsersUpdated value) usersUpdated,
     required TResult Function(Distract value) distract,
-    required TResult Function(GetChat value) getChat,
+    required TResult Function(GetMessages value) getMessages,
+    required TResult Function(MessageUpdated value) messgesUpdated,
     required TResult Function(GetListChat value) chatList,
     required TResult Function(ChatsUpdated value) chatsUpdated,
   }) {
@@ -194,7 +204,8 @@ class _$LoadUsersImpl implements LoadUsers {
     TResult? Function(LoadUsers value)? loadUsers,
     TResult? Function(UsersUpdated value)? usersUpdated,
     TResult? Function(Distract value)? distract,
-    TResult? Function(GetChat value)? getChat,
+    TResult? Function(GetMessages value)? getMessages,
+    TResult? Function(MessageUpdated value)? messgesUpdated,
     TResult? Function(GetListChat value)? chatList,
     TResult? Function(ChatsUpdated value)? chatsUpdated,
   }) {
@@ -207,7 +218,8 @@ class _$LoadUsersImpl implements LoadUsers {
     TResult Function(LoadUsers value)? loadUsers,
     TResult Function(UsersUpdated value)? usersUpdated,
     TResult Function(Distract value)? distract,
-    TResult Function(GetChat value)? getChat,
+    TResult Function(GetMessages value)? getMessages,
+    TResult Function(MessageUpdated value)? messgesUpdated,
     TResult Function(GetListChat value)? chatList,
     TResult Function(ChatsUpdated value)? chatsUpdated,
     required TResult orElse(),
@@ -296,7 +308,8 @@ class _$UsersUpdatedImpl implements UsersUpdated {
     required TResult Function() loadUsers,
     required TResult Function(List<User> users) usersUpdated,
     required TResult Function() distract,
-    required TResult Function(String chatId, String senderId) getChat,
+    required TResult Function(String chatId, String senderId) getMessages,
+    required TResult Function(List<ChatMessage> messages) messgesUpdated,
     required TResult Function(String currentUserId) chatList,
     required TResult Function(List<ChatModel> chats) chatsUpdated,
   }) {
@@ -309,7 +322,8 @@ class _$UsersUpdatedImpl implements UsersUpdated {
     TResult? Function()? loadUsers,
     TResult? Function(List<User> users)? usersUpdated,
     TResult? Function()? distract,
-    TResult? Function(String chatId, String senderId)? getChat,
+    TResult? Function(String chatId, String senderId)? getMessages,
+    TResult? Function(List<ChatMessage> messages)? messgesUpdated,
     TResult? Function(String currentUserId)? chatList,
     TResult? Function(List<ChatModel> chats)? chatsUpdated,
   }) {
@@ -322,7 +336,8 @@ class _$UsersUpdatedImpl implements UsersUpdated {
     TResult Function()? loadUsers,
     TResult Function(List<User> users)? usersUpdated,
     TResult Function()? distract,
-    TResult Function(String chatId, String senderId)? getChat,
+    TResult Function(String chatId, String senderId)? getMessages,
+    TResult Function(List<ChatMessage> messages)? messgesUpdated,
     TResult Function(String currentUserId)? chatList,
     TResult Function(List<ChatModel> chats)? chatsUpdated,
     required TResult orElse(),
@@ -339,7 +354,8 @@ class _$UsersUpdatedImpl implements UsersUpdated {
     required TResult Function(LoadUsers value) loadUsers,
     required TResult Function(UsersUpdated value) usersUpdated,
     required TResult Function(Distract value) distract,
-    required TResult Function(GetChat value) getChat,
+    required TResult Function(GetMessages value) getMessages,
+    required TResult Function(MessageUpdated value) messgesUpdated,
     required TResult Function(GetListChat value) chatList,
     required TResult Function(ChatsUpdated value) chatsUpdated,
   }) {
@@ -352,7 +368,8 @@ class _$UsersUpdatedImpl implements UsersUpdated {
     TResult? Function(LoadUsers value)? loadUsers,
     TResult? Function(UsersUpdated value)? usersUpdated,
     TResult? Function(Distract value)? distract,
-    TResult? Function(GetChat value)? getChat,
+    TResult? Function(GetMessages value)? getMessages,
+    TResult? Function(MessageUpdated value)? messgesUpdated,
     TResult? Function(GetListChat value)? chatList,
     TResult? Function(ChatsUpdated value)? chatsUpdated,
   }) {
@@ -365,7 +382,8 @@ class _$UsersUpdatedImpl implements UsersUpdated {
     TResult Function(LoadUsers value)? loadUsers,
     TResult Function(UsersUpdated value)? usersUpdated,
     TResult Function(Distract value)? distract,
-    TResult Function(GetChat value)? getChat,
+    TResult Function(GetMessages value)? getMessages,
+    TResult Function(MessageUpdated value)? messgesUpdated,
     TResult Function(GetListChat value)? chatList,
     TResult Function(ChatsUpdated value)? chatsUpdated,
     required TResult orElse(),
@@ -427,7 +445,8 @@ class _$DistractImpl implements Distract {
     required TResult Function() loadUsers,
     required TResult Function(List<User> users) usersUpdated,
     required TResult Function() distract,
-    required TResult Function(String chatId, String senderId) getChat,
+    required TResult Function(String chatId, String senderId) getMessages,
+    required TResult Function(List<ChatMessage> messages) messgesUpdated,
     required TResult Function(String currentUserId) chatList,
     required TResult Function(List<ChatModel> chats) chatsUpdated,
   }) {
@@ -440,7 +459,8 @@ class _$DistractImpl implements Distract {
     TResult? Function()? loadUsers,
     TResult? Function(List<User> users)? usersUpdated,
     TResult? Function()? distract,
-    TResult? Function(String chatId, String senderId)? getChat,
+    TResult? Function(String chatId, String senderId)? getMessages,
+    TResult? Function(List<ChatMessage> messages)? messgesUpdated,
     TResult? Function(String currentUserId)? chatList,
     TResult? Function(List<ChatModel> chats)? chatsUpdated,
   }) {
@@ -453,7 +473,8 @@ class _$DistractImpl implements Distract {
     TResult Function()? loadUsers,
     TResult Function(List<User> users)? usersUpdated,
     TResult Function()? distract,
-    TResult Function(String chatId, String senderId)? getChat,
+    TResult Function(String chatId, String senderId)? getMessages,
+    TResult Function(List<ChatMessage> messages)? messgesUpdated,
     TResult Function(String currentUserId)? chatList,
     TResult Function(List<ChatModel> chats)? chatsUpdated,
     required TResult orElse(),
@@ -470,7 +491,8 @@ class _$DistractImpl implements Distract {
     required TResult Function(LoadUsers value) loadUsers,
     required TResult Function(UsersUpdated value) usersUpdated,
     required TResult Function(Distract value) distract,
-    required TResult Function(GetChat value) getChat,
+    required TResult Function(GetMessages value) getMessages,
+    required TResult Function(MessageUpdated value) messgesUpdated,
     required TResult Function(GetListChat value) chatList,
     required TResult Function(ChatsUpdated value) chatsUpdated,
   }) {
@@ -483,7 +505,8 @@ class _$DistractImpl implements Distract {
     TResult? Function(LoadUsers value)? loadUsers,
     TResult? Function(UsersUpdated value)? usersUpdated,
     TResult? Function(Distract value)? distract,
-    TResult? Function(GetChat value)? getChat,
+    TResult? Function(GetMessages value)? getMessages,
+    TResult? Function(MessageUpdated value)? messgesUpdated,
     TResult? Function(GetListChat value)? chatList,
     TResult? Function(ChatsUpdated value)? chatsUpdated,
   }) {
@@ -496,7 +519,8 @@ class _$DistractImpl implements Distract {
     TResult Function(LoadUsers value)? loadUsers,
     TResult Function(UsersUpdated value)? usersUpdated,
     TResult Function(Distract value)? distract,
-    TResult Function(GetChat value)? getChat,
+    TResult Function(GetMessages value)? getMessages,
+    TResult Function(MessageUpdated value)? messgesUpdated,
     TResult Function(GetListChat value)? chatList,
     TResult Function(ChatsUpdated value)? chatsUpdated,
     required TResult orElse(),
@@ -513,20 +537,20 @@ abstract class Distract implements UserEvent {
 }
 
 /// @nodoc
-abstract class _$$GetChatImplCopyWith<$Res> {
-  factory _$$GetChatImplCopyWith(
-          _$GetChatImpl value, $Res Function(_$GetChatImpl) then) =
-      __$$GetChatImplCopyWithImpl<$Res>;
+abstract class _$$GetMessagesImplCopyWith<$Res> {
+  factory _$$GetMessagesImplCopyWith(
+          _$GetMessagesImpl value, $Res Function(_$GetMessagesImpl) then) =
+      __$$GetMessagesImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String chatId, String senderId});
 }
 
 /// @nodoc
-class __$$GetChatImplCopyWithImpl<$Res>
-    extends _$UserEventCopyWithImpl<$Res, _$GetChatImpl>
-    implements _$$GetChatImplCopyWith<$Res> {
-  __$$GetChatImplCopyWithImpl(
-      _$GetChatImpl _value, $Res Function(_$GetChatImpl) _then)
+class __$$GetMessagesImplCopyWithImpl<$Res>
+    extends _$UserEventCopyWithImpl<$Res, _$GetMessagesImpl>
+    implements _$$GetMessagesImplCopyWith<$Res> {
+  __$$GetMessagesImplCopyWithImpl(
+      _$GetMessagesImpl _value, $Res Function(_$GetMessagesImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -535,7 +559,7 @@ class __$$GetChatImplCopyWithImpl<$Res>
     Object? chatId = null,
     Object? senderId = null,
   }) {
-    return _then(_$GetChatImpl(
+    return _then(_$GetMessagesImpl(
       null == chatId
           ? _value.chatId
           : chatId // ignore: cast_nullable_to_non_nullable
@@ -550,8 +574,8 @@ class __$$GetChatImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GetChatImpl implements GetChat {
-  const _$GetChatImpl(this.chatId, this.senderId);
+class _$GetMessagesImpl implements GetMessages {
+  const _$GetMessagesImpl(this.chatId, this.senderId);
 
   @override
   final String chatId;
@@ -560,14 +584,14 @@ class _$GetChatImpl implements GetChat {
 
   @override
   String toString() {
-    return 'UserEvent.getChat(chatId: $chatId, senderId: $senderId)';
+    return 'UserEvent.getMessages(chatId: $chatId, senderId: $senderId)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetChatImpl &&
+            other is _$GetMessagesImpl &&
             (identical(other.chatId, chatId) || other.chatId == chatId) &&
             (identical(other.senderId, senderId) ||
                 other.senderId == senderId));
@@ -579,8 +603,8 @@ class _$GetChatImpl implements GetChat {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$GetChatImplCopyWith<_$GetChatImpl> get copyWith =>
-      __$$GetChatImplCopyWithImpl<_$GetChatImpl>(this, _$identity);
+  _$$GetMessagesImplCopyWith<_$GetMessagesImpl> get copyWith =>
+      __$$GetMessagesImplCopyWithImpl<_$GetMessagesImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -588,11 +612,12 @@ class _$GetChatImpl implements GetChat {
     required TResult Function() loadUsers,
     required TResult Function(List<User> users) usersUpdated,
     required TResult Function() distract,
-    required TResult Function(String chatId, String senderId) getChat,
+    required TResult Function(String chatId, String senderId) getMessages,
+    required TResult Function(List<ChatMessage> messages) messgesUpdated,
     required TResult Function(String currentUserId) chatList,
     required TResult Function(List<ChatModel> chats) chatsUpdated,
   }) {
-    return getChat(chatId, senderId);
+    return getMessages(chatId, senderId);
   }
 
   @override
@@ -601,11 +626,12 @@ class _$GetChatImpl implements GetChat {
     TResult? Function()? loadUsers,
     TResult? Function(List<User> users)? usersUpdated,
     TResult? Function()? distract,
-    TResult? Function(String chatId, String senderId)? getChat,
+    TResult? Function(String chatId, String senderId)? getMessages,
+    TResult? Function(List<ChatMessage> messages)? messgesUpdated,
     TResult? Function(String currentUserId)? chatList,
     TResult? Function(List<ChatModel> chats)? chatsUpdated,
   }) {
-    return getChat?.call(chatId, senderId);
+    return getMessages?.call(chatId, senderId);
   }
 
   @override
@@ -614,13 +640,14 @@ class _$GetChatImpl implements GetChat {
     TResult Function()? loadUsers,
     TResult Function(List<User> users)? usersUpdated,
     TResult Function()? distract,
-    TResult Function(String chatId, String senderId)? getChat,
+    TResult Function(String chatId, String senderId)? getMessages,
+    TResult Function(List<ChatMessage> messages)? messgesUpdated,
     TResult Function(String currentUserId)? chatList,
     TResult Function(List<ChatModel> chats)? chatsUpdated,
     required TResult orElse(),
   }) {
-    if (getChat != null) {
-      return getChat(chatId, senderId);
+    if (getMessages != null) {
+      return getMessages(chatId, senderId);
     }
     return orElse();
   }
@@ -631,11 +658,12 @@ class _$GetChatImpl implements GetChat {
     required TResult Function(LoadUsers value) loadUsers,
     required TResult Function(UsersUpdated value) usersUpdated,
     required TResult Function(Distract value) distract,
-    required TResult Function(GetChat value) getChat,
+    required TResult Function(GetMessages value) getMessages,
+    required TResult Function(MessageUpdated value) messgesUpdated,
     required TResult Function(GetListChat value) chatList,
     required TResult Function(ChatsUpdated value) chatsUpdated,
   }) {
-    return getChat(this);
+    return getMessages(this);
   }
 
   @override
@@ -644,11 +672,12 @@ class _$GetChatImpl implements GetChat {
     TResult? Function(LoadUsers value)? loadUsers,
     TResult? Function(UsersUpdated value)? usersUpdated,
     TResult? Function(Distract value)? distract,
-    TResult? Function(GetChat value)? getChat,
+    TResult? Function(GetMessages value)? getMessages,
+    TResult? Function(MessageUpdated value)? messgesUpdated,
     TResult? Function(GetListChat value)? chatList,
     TResult? Function(ChatsUpdated value)? chatsUpdated,
   }) {
-    return getChat?.call(this);
+    return getMessages?.call(this);
   }
 
   @override
@@ -657,26 +686,199 @@ class _$GetChatImpl implements GetChat {
     TResult Function(LoadUsers value)? loadUsers,
     TResult Function(UsersUpdated value)? usersUpdated,
     TResult Function(Distract value)? distract,
-    TResult Function(GetChat value)? getChat,
+    TResult Function(GetMessages value)? getMessages,
+    TResult Function(MessageUpdated value)? messgesUpdated,
     TResult Function(GetListChat value)? chatList,
     TResult Function(ChatsUpdated value)? chatsUpdated,
     required TResult orElse(),
   }) {
-    if (getChat != null) {
-      return getChat(this);
+    if (getMessages != null) {
+      return getMessages(this);
     }
     return orElse();
   }
 }
 
-abstract class GetChat implements UserEvent {
-  const factory GetChat(final String chatId, final String senderId) =
-      _$GetChatImpl;
+abstract class GetMessages implements UserEvent {
+  const factory GetMessages(final String chatId, final String senderId) =
+      _$GetMessagesImpl;
 
   String get chatId;
   String get senderId;
   @JsonKey(ignore: true)
-  _$$GetChatImplCopyWith<_$GetChatImpl> get copyWith =>
+  _$$GetMessagesImplCopyWith<_$GetMessagesImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$MessageUpdatedImplCopyWith<$Res> {
+  factory _$$MessageUpdatedImplCopyWith(_$MessageUpdatedImpl value,
+          $Res Function(_$MessageUpdatedImpl) then) =
+      __$$MessageUpdatedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<ChatMessage> messages});
+}
+
+/// @nodoc
+class __$$MessageUpdatedImplCopyWithImpl<$Res>
+    extends _$UserEventCopyWithImpl<$Res, _$MessageUpdatedImpl>
+    implements _$$MessageUpdatedImplCopyWith<$Res> {
+  __$$MessageUpdatedImplCopyWithImpl(
+      _$MessageUpdatedImpl _value, $Res Function(_$MessageUpdatedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? messages = null,
+  }) {
+    return _then(_$MessageUpdatedImpl(
+      null == messages
+          ? _value._messages
+          : messages // ignore: cast_nullable_to_non_nullable
+              as List<ChatMessage>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$MessageUpdatedImpl implements MessageUpdated {
+  const _$MessageUpdatedImpl(final List<ChatMessage> messages)
+      : _messages = messages;
+
+  final List<ChatMessage> _messages;
+  @override
+  List<ChatMessage> get messages {
+    if (_messages is EqualUnmodifiableListView) return _messages;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_messages);
+  }
+
+  @override
+  String toString() {
+    return 'UserEvent.messgesUpdated(messages: $messages)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$MessageUpdatedImpl &&
+            const DeepCollectionEquality().equals(other._messages, _messages));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_messages));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$MessageUpdatedImplCopyWith<_$MessageUpdatedImpl> get copyWith =>
+      __$$MessageUpdatedImplCopyWithImpl<_$MessageUpdatedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadUsers,
+    required TResult Function(List<User> users) usersUpdated,
+    required TResult Function() distract,
+    required TResult Function(String chatId, String senderId) getMessages,
+    required TResult Function(List<ChatMessage> messages) messgesUpdated,
+    required TResult Function(String currentUserId) chatList,
+    required TResult Function(List<ChatModel> chats) chatsUpdated,
+  }) {
+    return messgesUpdated(messages);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loadUsers,
+    TResult? Function(List<User> users)? usersUpdated,
+    TResult? Function()? distract,
+    TResult? Function(String chatId, String senderId)? getMessages,
+    TResult? Function(List<ChatMessage> messages)? messgesUpdated,
+    TResult? Function(String currentUserId)? chatList,
+    TResult? Function(List<ChatModel> chats)? chatsUpdated,
+  }) {
+    return messgesUpdated?.call(messages);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadUsers,
+    TResult Function(List<User> users)? usersUpdated,
+    TResult Function()? distract,
+    TResult Function(String chatId, String senderId)? getMessages,
+    TResult Function(List<ChatMessage> messages)? messgesUpdated,
+    TResult Function(String currentUserId)? chatList,
+    TResult Function(List<ChatModel> chats)? chatsUpdated,
+    required TResult orElse(),
+  }) {
+    if (messgesUpdated != null) {
+      return messgesUpdated(messages);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadUsers value) loadUsers,
+    required TResult Function(UsersUpdated value) usersUpdated,
+    required TResult Function(Distract value) distract,
+    required TResult Function(GetMessages value) getMessages,
+    required TResult Function(MessageUpdated value) messgesUpdated,
+    required TResult Function(GetListChat value) chatList,
+    required TResult Function(ChatsUpdated value) chatsUpdated,
+  }) {
+    return messgesUpdated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadUsers value)? loadUsers,
+    TResult? Function(UsersUpdated value)? usersUpdated,
+    TResult? Function(Distract value)? distract,
+    TResult? Function(GetMessages value)? getMessages,
+    TResult? Function(MessageUpdated value)? messgesUpdated,
+    TResult? Function(GetListChat value)? chatList,
+    TResult? Function(ChatsUpdated value)? chatsUpdated,
+  }) {
+    return messgesUpdated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadUsers value)? loadUsers,
+    TResult Function(UsersUpdated value)? usersUpdated,
+    TResult Function(Distract value)? distract,
+    TResult Function(GetMessages value)? getMessages,
+    TResult Function(MessageUpdated value)? messgesUpdated,
+    TResult Function(GetListChat value)? chatList,
+    TResult Function(ChatsUpdated value)? chatsUpdated,
+    required TResult orElse(),
+  }) {
+    if (messgesUpdated != null) {
+      return messgesUpdated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class MessageUpdated implements UserEvent {
+  const factory MessageUpdated(final List<ChatMessage> messages) =
+      _$MessageUpdatedImpl;
+
+  List<ChatMessage> get messages;
+  @JsonKey(ignore: true)
+  _$$MessageUpdatedImplCopyWith<_$MessageUpdatedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -748,7 +950,8 @@ class _$GetListChatImpl implements GetListChat {
     required TResult Function() loadUsers,
     required TResult Function(List<User> users) usersUpdated,
     required TResult Function() distract,
-    required TResult Function(String chatId, String senderId) getChat,
+    required TResult Function(String chatId, String senderId) getMessages,
+    required TResult Function(List<ChatMessage> messages) messgesUpdated,
     required TResult Function(String currentUserId) chatList,
     required TResult Function(List<ChatModel> chats) chatsUpdated,
   }) {
@@ -761,7 +964,8 @@ class _$GetListChatImpl implements GetListChat {
     TResult? Function()? loadUsers,
     TResult? Function(List<User> users)? usersUpdated,
     TResult? Function()? distract,
-    TResult? Function(String chatId, String senderId)? getChat,
+    TResult? Function(String chatId, String senderId)? getMessages,
+    TResult? Function(List<ChatMessage> messages)? messgesUpdated,
     TResult? Function(String currentUserId)? chatList,
     TResult? Function(List<ChatModel> chats)? chatsUpdated,
   }) {
@@ -774,7 +978,8 @@ class _$GetListChatImpl implements GetListChat {
     TResult Function()? loadUsers,
     TResult Function(List<User> users)? usersUpdated,
     TResult Function()? distract,
-    TResult Function(String chatId, String senderId)? getChat,
+    TResult Function(String chatId, String senderId)? getMessages,
+    TResult Function(List<ChatMessage> messages)? messgesUpdated,
     TResult Function(String currentUserId)? chatList,
     TResult Function(List<ChatModel> chats)? chatsUpdated,
     required TResult orElse(),
@@ -791,7 +996,8 @@ class _$GetListChatImpl implements GetListChat {
     required TResult Function(LoadUsers value) loadUsers,
     required TResult Function(UsersUpdated value) usersUpdated,
     required TResult Function(Distract value) distract,
-    required TResult Function(GetChat value) getChat,
+    required TResult Function(GetMessages value) getMessages,
+    required TResult Function(MessageUpdated value) messgesUpdated,
     required TResult Function(GetListChat value) chatList,
     required TResult Function(ChatsUpdated value) chatsUpdated,
   }) {
@@ -804,7 +1010,8 @@ class _$GetListChatImpl implements GetListChat {
     TResult? Function(LoadUsers value)? loadUsers,
     TResult? Function(UsersUpdated value)? usersUpdated,
     TResult? Function(Distract value)? distract,
-    TResult? Function(GetChat value)? getChat,
+    TResult? Function(GetMessages value)? getMessages,
+    TResult? Function(MessageUpdated value)? messgesUpdated,
     TResult? Function(GetListChat value)? chatList,
     TResult? Function(ChatsUpdated value)? chatsUpdated,
   }) {
@@ -817,7 +1024,8 @@ class _$GetListChatImpl implements GetListChat {
     TResult Function(LoadUsers value)? loadUsers,
     TResult Function(UsersUpdated value)? usersUpdated,
     TResult Function(Distract value)? distract,
-    TResult Function(GetChat value)? getChat,
+    TResult Function(GetMessages value)? getMessages,
+    TResult Function(MessageUpdated value)? messgesUpdated,
     TResult Function(GetListChat value)? chatList,
     TResult Function(ChatsUpdated value)? chatsUpdated,
     required TResult orElse(),
@@ -911,7 +1119,8 @@ class _$ChatsUpdatedImpl implements ChatsUpdated {
     required TResult Function() loadUsers,
     required TResult Function(List<User> users) usersUpdated,
     required TResult Function() distract,
-    required TResult Function(String chatId, String senderId) getChat,
+    required TResult Function(String chatId, String senderId) getMessages,
+    required TResult Function(List<ChatMessage> messages) messgesUpdated,
     required TResult Function(String currentUserId) chatList,
     required TResult Function(List<ChatModel> chats) chatsUpdated,
   }) {
@@ -924,7 +1133,8 @@ class _$ChatsUpdatedImpl implements ChatsUpdated {
     TResult? Function()? loadUsers,
     TResult? Function(List<User> users)? usersUpdated,
     TResult? Function()? distract,
-    TResult? Function(String chatId, String senderId)? getChat,
+    TResult? Function(String chatId, String senderId)? getMessages,
+    TResult? Function(List<ChatMessage> messages)? messgesUpdated,
     TResult? Function(String currentUserId)? chatList,
     TResult? Function(List<ChatModel> chats)? chatsUpdated,
   }) {
@@ -937,7 +1147,8 @@ class _$ChatsUpdatedImpl implements ChatsUpdated {
     TResult Function()? loadUsers,
     TResult Function(List<User> users)? usersUpdated,
     TResult Function()? distract,
-    TResult Function(String chatId, String senderId)? getChat,
+    TResult Function(String chatId, String senderId)? getMessages,
+    TResult Function(List<ChatMessage> messages)? messgesUpdated,
     TResult Function(String currentUserId)? chatList,
     TResult Function(List<ChatModel> chats)? chatsUpdated,
     required TResult orElse(),
@@ -954,7 +1165,8 @@ class _$ChatsUpdatedImpl implements ChatsUpdated {
     required TResult Function(LoadUsers value) loadUsers,
     required TResult Function(UsersUpdated value) usersUpdated,
     required TResult Function(Distract value) distract,
-    required TResult Function(GetChat value) getChat,
+    required TResult Function(GetMessages value) getMessages,
+    required TResult Function(MessageUpdated value) messgesUpdated,
     required TResult Function(GetListChat value) chatList,
     required TResult Function(ChatsUpdated value) chatsUpdated,
   }) {
@@ -967,7 +1179,8 @@ class _$ChatsUpdatedImpl implements ChatsUpdated {
     TResult? Function(LoadUsers value)? loadUsers,
     TResult? Function(UsersUpdated value)? usersUpdated,
     TResult? Function(Distract value)? distract,
-    TResult? Function(GetChat value)? getChat,
+    TResult? Function(GetMessages value)? getMessages,
+    TResult? Function(MessageUpdated value)? messgesUpdated,
     TResult? Function(GetListChat value)? chatList,
     TResult? Function(ChatsUpdated value)? chatsUpdated,
   }) {
@@ -980,7 +1193,8 @@ class _$ChatsUpdatedImpl implements ChatsUpdated {
     TResult Function(LoadUsers value)? loadUsers,
     TResult Function(UsersUpdated value)? usersUpdated,
     TResult Function(Distract value)? distract,
-    TResult Function(GetChat value)? getChat,
+    TResult Function(GetMessages value)? getMessages,
+    TResult Function(MessageUpdated value)? messgesUpdated,
     TResult Function(GetListChat value)? chatList,
     TResult Function(ChatsUpdated value)? chatsUpdated,
     required TResult orElse(),

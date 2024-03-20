@@ -54,25 +54,3 @@ class UserAdapter extends TypeAdapter<User> {
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
-
-// **************************************************************************
-// JsonSerializableGenerator
-// **************************************************************************
-
-User _$UserFromJson(Map<String, dynamic> json) => User(
-      uid: json['uid'] as String,
-      name: json['name'] as String,
-      email: json['email'] as String,
-      imageUrl: json['imageUrl'] as String,
-      lastSeen: DateTime.parse(json['lastSeen'] as String),
-      isOnline: json['isOnline'] as bool,
-    );
-
-Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
-      'uid': instance.uid,
-      'name': instance.name,
-      'email': instance.email,
-      'imageUrl': instance.imageUrl,
-      'lastSeen': instance.lastSeen.toIso8601String(),
-      'isOnline': instance.isOnline,
-    };

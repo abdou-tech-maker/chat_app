@@ -17,6 +17,7 @@ class UserItem extends StatelessWidget {
           CupertinoPageRoute(
             builder: (context) => ChatScreen(
               user: user,
+              chatId: "",
             ),
           ),
         );
