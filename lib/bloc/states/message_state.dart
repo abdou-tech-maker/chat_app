@@ -17,3 +17,12 @@ class MessageLoaded extends MessageState {
 }
 
 class MessageLoadFailure extends MessageState {}
+
+class MessageSending extends MessageState {}
+
+class MessageSent extends MessageState {}
+
+class MessageSendError extends MessageState {
+  final String error;
+  MessageSendError(this.error);
+}

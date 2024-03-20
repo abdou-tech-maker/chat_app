@@ -14,8 +14,6 @@ class ChatBloc extends Bloc<UserEvent, ChatState> {
   ChatBloc() : super(ChatLoading()) {
     on<GetListChat>(_onGetChat);
     on<ChatsUpdated>(_onChatsUpdatedEvent);
-
-    // on<SendMessage>(_onSendMessage);
   }
 
   void _onGetChat(GetListChat event, Emitter<ChatState> emit) {

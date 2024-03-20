@@ -25,6 +25,9 @@ mixin _$UserEvent {
     required TResult Function(List<ChatMessage> messages) messgesUpdated,
     required TResult Function(String currentUserId) chatList,
     required TResult Function(List<ChatModel> chats) chatsUpdated,
+    required TResult Function(String chatId, String senderId, String recieverId,
+            ChatMessage message)
+        sendMessage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -36,6 +39,9 @@ mixin _$UserEvent {
     TResult? Function(List<ChatMessage> messages)? messgesUpdated,
     TResult? Function(String currentUserId)? chatList,
     TResult? Function(List<ChatModel> chats)? chatsUpdated,
+    TResult? Function(String chatId, String senderId, String recieverId,
+            ChatMessage message)?
+        sendMessage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -47,6 +53,9 @@ mixin _$UserEvent {
     TResult Function(List<ChatMessage> messages)? messgesUpdated,
     TResult Function(String currentUserId)? chatList,
     TResult Function(List<ChatModel> chats)? chatsUpdated,
+    TResult Function(String chatId, String senderId, String recieverId,
+            ChatMessage message)?
+        sendMessage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -59,6 +68,7 @@ mixin _$UserEvent {
     required TResult Function(MessageUpdated value) messgesUpdated,
     required TResult Function(GetListChat value) chatList,
     required TResult Function(ChatsUpdated value) chatsUpdated,
+    required TResult Function(SendMessage value) sendMessage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -70,6 +80,7 @@ mixin _$UserEvent {
     TResult? Function(MessageUpdated value)? messgesUpdated,
     TResult? Function(GetListChat value)? chatList,
     TResult? Function(ChatsUpdated value)? chatsUpdated,
+    TResult? Function(SendMessage value)? sendMessage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -81,6 +92,7 @@ mixin _$UserEvent {
     TResult Function(MessageUpdated value)? messgesUpdated,
     TResult Function(GetListChat value)? chatList,
     TResult Function(ChatsUpdated value)? chatsUpdated,
+    TResult Function(SendMessage value)? sendMessage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -148,6 +160,9 @@ class _$LoadUsersImpl implements LoadUsers {
     required TResult Function(List<ChatMessage> messages) messgesUpdated,
     required TResult Function(String currentUserId) chatList,
     required TResult Function(List<ChatModel> chats) chatsUpdated,
+    required TResult Function(String chatId, String senderId, String recieverId,
+            ChatMessage message)
+        sendMessage,
   }) {
     return loadUsers();
   }
@@ -162,6 +177,9 @@ class _$LoadUsersImpl implements LoadUsers {
     TResult? Function(List<ChatMessage> messages)? messgesUpdated,
     TResult? Function(String currentUserId)? chatList,
     TResult? Function(List<ChatModel> chats)? chatsUpdated,
+    TResult? Function(String chatId, String senderId, String recieverId,
+            ChatMessage message)?
+        sendMessage,
   }) {
     return loadUsers?.call();
   }
@@ -176,6 +194,9 @@ class _$LoadUsersImpl implements LoadUsers {
     TResult Function(List<ChatMessage> messages)? messgesUpdated,
     TResult Function(String currentUserId)? chatList,
     TResult Function(List<ChatModel> chats)? chatsUpdated,
+    TResult Function(String chatId, String senderId, String recieverId,
+            ChatMessage message)?
+        sendMessage,
     required TResult orElse(),
   }) {
     if (loadUsers != null) {
@@ -194,6 +215,7 @@ class _$LoadUsersImpl implements LoadUsers {
     required TResult Function(MessageUpdated value) messgesUpdated,
     required TResult Function(GetListChat value) chatList,
     required TResult Function(ChatsUpdated value) chatsUpdated,
+    required TResult Function(SendMessage value) sendMessage,
   }) {
     return loadUsers(this);
   }
@@ -208,6 +230,7 @@ class _$LoadUsersImpl implements LoadUsers {
     TResult? Function(MessageUpdated value)? messgesUpdated,
     TResult? Function(GetListChat value)? chatList,
     TResult? Function(ChatsUpdated value)? chatsUpdated,
+    TResult? Function(SendMessage value)? sendMessage,
   }) {
     return loadUsers?.call(this);
   }
@@ -222,6 +245,7 @@ class _$LoadUsersImpl implements LoadUsers {
     TResult Function(MessageUpdated value)? messgesUpdated,
     TResult Function(GetListChat value)? chatList,
     TResult Function(ChatsUpdated value)? chatsUpdated,
+    TResult Function(SendMessage value)? sendMessage,
     required TResult orElse(),
   }) {
     if (loadUsers != null) {
@@ -312,6 +336,9 @@ class _$UsersUpdatedImpl implements UsersUpdated {
     required TResult Function(List<ChatMessage> messages) messgesUpdated,
     required TResult Function(String currentUserId) chatList,
     required TResult Function(List<ChatModel> chats) chatsUpdated,
+    required TResult Function(String chatId, String senderId, String recieverId,
+            ChatMessage message)
+        sendMessage,
   }) {
     return usersUpdated(users);
   }
@@ -326,6 +353,9 @@ class _$UsersUpdatedImpl implements UsersUpdated {
     TResult? Function(List<ChatMessage> messages)? messgesUpdated,
     TResult? Function(String currentUserId)? chatList,
     TResult? Function(List<ChatModel> chats)? chatsUpdated,
+    TResult? Function(String chatId, String senderId, String recieverId,
+            ChatMessage message)?
+        sendMessage,
   }) {
     return usersUpdated?.call(users);
   }
@@ -340,6 +370,9 @@ class _$UsersUpdatedImpl implements UsersUpdated {
     TResult Function(List<ChatMessage> messages)? messgesUpdated,
     TResult Function(String currentUserId)? chatList,
     TResult Function(List<ChatModel> chats)? chatsUpdated,
+    TResult Function(String chatId, String senderId, String recieverId,
+            ChatMessage message)?
+        sendMessage,
     required TResult orElse(),
   }) {
     if (usersUpdated != null) {
@@ -358,6 +391,7 @@ class _$UsersUpdatedImpl implements UsersUpdated {
     required TResult Function(MessageUpdated value) messgesUpdated,
     required TResult Function(GetListChat value) chatList,
     required TResult Function(ChatsUpdated value) chatsUpdated,
+    required TResult Function(SendMessage value) sendMessage,
   }) {
     return usersUpdated(this);
   }
@@ -372,6 +406,7 @@ class _$UsersUpdatedImpl implements UsersUpdated {
     TResult? Function(MessageUpdated value)? messgesUpdated,
     TResult? Function(GetListChat value)? chatList,
     TResult? Function(ChatsUpdated value)? chatsUpdated,
+    TResult? Function(SendMessage value)? sendMessage,
   }) {
     return usersUpdated?.call(this);
   }
@@ -386,6 +421,7 @@ class _$UsersUpdatedImpl implements UsersUpdated {
     TResult Function(MessageUpdated value)? messgesUpdated,
     TResult Function(GetListChat value)? chatList,
     TResult Function(ChatsUpdated value)? chatsUpdated,
+    TResult Function(SendMessage value)? sendMessage,
     required TResult orElse(),
   }) {
     if (usersUpdated != null) {
@@ -449,6 +485,9 @@ class _$DistractImpl implements Distract {
     required TResult Function(List<ChatMessage> messages) messgesUpdated,
     required TResult Function(String currentUserId) chatList,
     required TResult Function(List<ChatModel> chats) chatsUpdated,
+    required TResult Function(String chatId, String senderId, String recieverId,
+            ChatMessage message)
+        sendMessage,
   }) {
     return distract();
   }
@@ -463,6 +502,9 @@ class _$DistractImpl implements Distract {
     TResult? Function(List<ChatMessage> messages)? messgesUpdated,
     TResult? Function(String currentUserId)? chatList,
     TResult? Function(List<ChatModel> chats)? chatsUpdated,
+    TResult? Function(String chatId, String senderId, String recieverId,
+            ChatMessage message)?
+        sendMessage,
   }) {
     return distract?.call();
   }
@@ -477,6 +519,9 @@ class _$DistractImpl implements Distract {
     TResult Function(List<ChatMessage> messages)? messgesUpdated,
     TResult Function(String currentUserId)? chatList,
     TResult Function(List<ChatModel> chats)? chatsUpdated,
+    TResult Function(String chatId, String senderId, String recieverId,
+            ChatMessage message)?
+        sendMessage,
     required TResult orElse(),
   }) {
     if (distract != null) {
@@ -495,6 +540,7 @@ class _$DistractImpl implements Distract {
     required TResult Function(MessageUpdated value) messgesUpdated,
     required TResult Function(GetListChat value) chatList,
     required TResult Function(ChatsUpdated value) chatsUpdated,
+    required TResult Function(SendMessage value) sendMessage,
   }) {
     return distract(this);
   }
@@ -509,6 +555,7 @@ class _$DistractImpl implements Distract {
     TResult? Function(MessageUpdated value)? messgesUpdated,
     TResult? Function(GetListChat value)? chatList,
     TResult? Function(ChatsUpdated value)? chatsUpdated,
+    TResult? Function(SendMessage value)? sendMessage,
   }) {
     return distract?.call(this);
   }
@@ -523,6 +570,7 @@ class _$DistractImpl implements Distract {
     TResult Function(MessageUpdated value)? messgesUpdated,
     TResult Function(GetListChat value)? chatList,
     TResult Function(ChatsUpdated value)? chatsUpdated,
+    TResult Function(SendMessage value)? sendMessage,
     required TResult orElse(),
   }) {
     if (distract != null) {
@@ -616,6 +664,9 @@ class _$GetMessagesImpl implements GetMessages {
     required TResult Function(List<ChatMessage> messages) messgesUpdated,
     required TResult Function(String currentUserId) chatList,
     required TResult Function(List<ChatModel> chats) chatsUpdated,
+    required TResult Function(String chatId, String senderId, String recieverId,
+            ChatMessage message)
+        sendMessage,
   }) {
     return getMessages(chatId, senderId);
   }
@@ -630,6 +681,9 @@ class _$GetMessagesImpl implements GetMessages {
     TResult? Function(List<ChatMessage> messages)? messgesUpdated,
     TResult? Function(String currentUserId)? chatList,
     TResult? Function(List<ChatModel> chats)? chatsUpdated,
+    TResult? Function(String chatId, String senderId, String recieverId,
+            ChatMessage message)?
+        sendMessage,
   }) {
     return getMessages?.call(chatId, senderId);
   }
@@ -644,6 +698,9 @@ class _$GetMessagesImpl implements GetMessages {
     TResult Function(List<ChatMessage> messages)? messgesUpdated,
     TResult Function(String currentUserId)? chatList,
     TResult Function(List<ChatModel> chats)? chatsUpdated,
+    TResult Function(String chatId, String senderId, String recieverId,
+            ChatMessage message)?
+        sendMessage,
     required TResult orElse(),
   }) {
     if (getMessages != null) {
@@ -662,6 +719,7 @@ class _$GetMessagesImpl implements GetMessages {
     required TResult Function(MessageUpdated value) messgesUpdated,
     required TResult Function(GetListChat value) chatList,
     required TResult Function(ChatsUpdated value) chatsUpdated,
+    required TResult Function(SendMessage value) sendMessage,
   }) {
     return getMessages(this);
   }
@@ -676,6 +734,7 @@ class _$GetMessagesImpl implements GetMessages {
     TResult? Function(MessageUpdated value)? messgesUpdated,
     TResult? Function(GetListChat value)? chatList,
     TResult? Function(ChatsUpdated value)? chatsUpdated,
+    TResult? Function(SendMessage value)? sendMessage,
   }) {
     return getMessages?.call(this);
   }
@@ -690,6 +749,7 @@ class _$GetMessagesImpl implements GetMessages {
     TResult Function(MessageUpdated value)? messgesUpdated,
     TResult Function(GetListChat value)? chatList,
     TResult Function(ChatsUpdated value)? chatsUpdated,
+    TResult Function(SendMessage value)? sendMessage,
     required TResult orElse(),
   }) {
     if (getMessages != null) {
@@ -789,6 +849,9 @@ class _$MessageUpdatedImpl implements MessageUpdated {
     required TResult Function(List<ChatMessage> messages) messgesUpdated,
     required TResult Function(String currentUserId) chatList,
     required TResult Function(List<ChatModel> chats) chatsUpdated,
+    required TResult Function(String chatId, String senderId, String recieverId,
+            ChatMessage message)
+        sendMessage,
   }) {
     return messgesUpdated(messages);
   }
@@ -803,6 +866,9 @@ class _$MessageUpdatedImpl implements MessageUpdated {
     TResult? Function(List<ChatMessage> messages)? messgesUpdated,
     TResult? Function(String currentUserId)? chatList,
     TResult? Function(List<ChatModel> chats)? chatsUpdated,
+    TResult? Function(String chatId, String senderId, String recieverId,
+            ChatMessage message)?
+        sendMessage,
   }) {
     return messgesUpdated?.call(messages);
   }
@@ -817,6 +883,9 @@ class _$MessageUpdatedImpl implements MessageUpdated {
     TResult Function(List<ChatMessage> messages)? messgesUpdated,
     TResult Function(String currentUserId)? chatList,
     TResult Function(List<ChatModel> chats)? chatsUpdated,
+    TResult Function(String chatId, String senderId, String recieverId,
+            ChatMessage message)?
+        sendMessage,
     required TResult orElse(),
   }) {
     if (messgesUpdated != null) {
@@ -835,6 +904,7 @@ class _$MessageUpdatedImpl implements MessageUpdated {
     required TResult Function(MessageUpdated value) messgesUpdated,
     required TResult Function(GetListChat value) chatList,
     required TResult Function(ChatsUpdated value) chatsUpdated,
+    required TResult Function(SendMessage value) sendMessage,
   }) {
     return messgesUpdated(this);
   }
@@ -849,6 +919,7 @@ class _$MessageUpdatedImpl implements MessageUpdated {
     TResult? Function(MessageUpdated value)? messgesUpdated,
     TResult? Function(GetListChat value)? chatList,
     TResult? Function(ChatsUpdated value)? chatsUpdated,
+    TResult? Function(SendMessage value)? sendMessage,
   }) {
     return messgesUpdated?.call(this);
   }
@@ -863,6 +934,7 @@ class _$MessageUpdatedImpl implements MessageUpdated {
     TResult Function(MessageUpdated value)? messgesUpdated,
     TResult Function(GetListChat value)? chatList,
     TResult Function(ChatsUpdated value)? chatsUpdated,
+    TResult Function(SendMessage value)? sendMessage,
     required TResult orElse(),
   }) {
     if (messgesUpdated != null) {
@@ -954,6 +1026,9 @@ class _$GetListChatImpl implements GetListChat {
     required TResult Function(List<ChatMessage> messages) messgesUpdated,
     required TResult Function(String currentUserId) chatList,
     required TResult Function(List<ChatModel> chats) chatsUpdated,
+    required TResult Function(String chatId, String senderId, String recieverId,
+            ChatMessage message)
+        sendMessage,
   }) {
     return chatList(currentUserId);
   }
@@ -968,6 +1043,9 @@ class _$GetListChatImpl implements GetListChat {
     TResult? Function(List<ChatMessage> messages)? messgesUpdated,
     TResult? Function(String currentUserId)? chatList,
     TResult? Function(List<ChatModel> chats)? chatsUpdated,
+    TResult? Function(String chatId, String senderId, String recieverId,
+            ChatMessage message)?
+        sendMessage,
   }) {
     return chatList?.call(currentUserId);
   }
@@ -982,6 +1060,9 @@ class _$GetListChatImpl implements GetListChat {
     TResult Function(List<ChatMessage> messages)? messgesUpdated,
     TResult Function(String currentUserId)? chatList,
     TResult Function(List<ChatModel> chats)? chatsUpdated,
+    TResult Function(String chatId, String senderId, String recieverId,
+            ChatMessage message)?
+        sendMessage,
     required TResult orElse(),
   }) {
     if (chatList != null) {
@@ -1000,6 +1081,7 @@ class _$GetListChatImpl implements GetListChat {
     required TResult Function(MessageUpdated value) messgesUpdated,
     required TResult Function(GetListChat value) chatList,
     required TResult Function(ChatsUpdated value) chatsUpdated,
+    required TResult Function(SendMessage value) sendMessage,
   }) {
     return chatList(this);
   }
@@ -1014,6 +1096,7 @@ class _$GetListChatImpl implements GetListChat {
     TResult? Function(MessageUpdated value)? messgesUpdated,
     TResult? Function(GetListChat value)? chatList,
     TResult? Function(ChatsUpdated value)? chatsUpdated,
+    TResult? Function(SendMessage value)? sendMessage,
   }) {
     return chatList?.call(this);
   }
@@ -1028,6 +1111,7 @@ class _$GetListChatImpl implements GetListChat {
     TResult Function(MessageUpdated value)? messgesUpdated,
     TResult Function(GetListChat value)? chatList,
     TResult Function(ChatsUpdated value)? chatsUpdated,
+    TResult Function(SendMessage value)? sendMessage,
     required TResult orElse(),
   }) {
     if (chatList != null) {
@@ -1123,6 +1207,9 @@ class _$ChatsUpdatedImpl implements ChatsUpdated {
     required TResult Function(List<ChatMessage> messages) messgesUpdated,
     required TResult Function(String currentUserId) chatList,
     required TResult Function(List<ChatModel> chats) chatsUpdated,
+    required TResult Function(String chatId, String senderId, String recieverId,
+            ChatMessage message)
+        sendMessage,
   }) {
     return chatsUpdated(chats);
   }
@@ -1137,6 +1224,9 @@ class _$ChatsUpdatedImpl implements ChatsUpdated {
     TResult? Function(List<ChatMessage> messages)? messgesUpdated,
     TResult? Function(String currentUserId)? chatList,
     TResult? Function(List<ChatModel> chats)? chatsUpdated,
+    TResult? Function(String chatId, String senderId, String recieverId,
+            ChatMessage message)?
+        sendMessage,
   }) {
     return chatsUpdated?.call(chats);
   }
@@ -1151,6 +1241,9 @@ class _$ChatsUpdatedImpl implements ChatsUpdated {
     TResult Function(List<ChatMessage> messages)? messgesUpdated,
     TResult Function(String currentUserId)? chatList,
     TResult Function(List<ChatModel> chats)? chatsUpdated,
+    TResult Function(String chatId, String senderId, String recieverId,
+            ChatMessage message)?
+        sendMessage,
     required TResult orElse(),
   }) {
     if (chatsUpdated != null) {
@@ -1169,6 +1262,7 @@ class _$ChatsUpdatedImpl implements ChatsUpdated {
     required TResult Function(MessageUpdated value) messgesUpdated,
     required TResult Function(GetListChat value) chatList,
     required TResult Function(ChatsUpdated value) chatsUpdated,
+    required TResult Function(SendMessage value) sendMessage,
   }) {
     return chatsUpdated(this);
   }
@@ -1183,6 +1277,7 @@ class _$ChatsUpdatedImpl implements ChatsUpdated {
     TResult? Function(MessageUpdated value)? messgesUpdated,
     TResult? Function(GetListChat value)? chatList,
     TResult? Function(ChatsUpdated value)? chatsUpdated,
+    TResult? Function(SendMessage value)? sendMessage,
   }) {
     return chatsUpdated?.call(this);
   }
@@ -1197,6 +1292,7 @@ class _$ChatsUpdatedImpl implements ChatsUpdated {
     TResult Function(MessageUpdated value)? messgesUpdated,
     TResult Function(GetListChat value)? chatList,
     TResult Function(ChatsUpdated value)? chatsUpdated,
+    TResult Function(SendMessage value)? sendMessage,
     required TResult orElse(),
   }) {
     if (chatsUpdated != null) {
@@ -1212,5 +1308,213 @@ abstract class ChatsUpdated implements UserEvent {
   List<ChatModel> get chats;
   @JsonKey(ignore: true)
   _$$ChatsUpdatedImplCopyWith<_$ChatsUpdatedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SendMessageImplCopyWith<$Res> {
+  factory _$$SendMessageImplCopyWith(
+          _$SendMessageImpl value, $Res Function(_$SendMessageImpl) then) =
+      __$$SendMessageImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {String chatId, String senderId, String recieverId, ChatMessage message});
+}
+
+/// @nodoc
+class __$$SendMessageImplCopyWithImpl<$Res>
+    extends _$UserEventCopyWithImpl<$Res, _$SendMessageImpl>
+    implements _$$SendMessageImplCopyWith<$Res> {
+  __$$SendMessageImplCopyWithImpl(
+      _$SendMessageImpl _value, $Res Function(_$SendMessageImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? chatId = null,
+    Object? senderId = null,
+    Object? recieverId = null,
+    Object? message = null,
+  }) {
+    return _then(_$SendMessageImpl(
+      null == chatId
+          ? _value.chatId
+          : chatId // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == senderId
+          ? _value.senderId
+          : senderId // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == recieverId
+          ? _value.recieverId
+          : recieverId // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as ChatMessage,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SendMessageImpl implements SendMessage {
+  const _$SendMessageImpl(
+      this.chatId, this.senderId, this.recieverId, this.message);
+
+  @override
+  final String chatId;
+  @override
+  final String senderId;
+  @override
+  final String recieverId;
+  @override
+  final ChatMessage message;
+
+  @override
+  String toString() {
+    return 'UserEvent.sendMessage(chatId: $chatId, senderId: $senderId, recieverId: $recieverId, message: $message)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SendMessageImpl &&
+            (identical(other.chatId, chatId) || other.chatId == chatId) &&
+            (identical(other.senderId, senderId) ||
+                other.senderId == senderId) &&
+            (identical(other.recieverId, recieverId) ||
+                other.recieverId == recieverId) &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, chatId, senderId, recieverId, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SendMessageImplCopyWith<_$SendMessageImpl> get copyWith =>
+      __$$SendMessageImplCopyWithImpl<_$SendMessageImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadUsers,
+    required TResult Function(List<User> users) usersUpdated,
+    required TResult Function() distract,
+    required TResult Function(String chatId, String senderId) getMessages,
+    required TResult Function(List<ChatMessage> messages) messgesUpdated,
+    required TResult Function(String currentUserId) chatList,
+    required TResult Function(List<ChatModel> chats) chatsUpdated,
+    required TResult Function(String chatId, String senderId, String recieverId,
+            ChatMessage message)
+        sendMessage,
+  }) {
+    return sendMessage(chatId, senderId, recieverId, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loadUsers,
+    TResult? Function(List<User> users)? usersUpdated,
+    TResult? Function()? distract,
+    TResult? Function(String chatId, String senderId)? getMessages,
+    TResult? Function(List<ChatMessage> messages)? messgesUpdated,
+    TResult? Function(String currentUserId)? chatList,
+    TResult? Function(List<ChatModel> chats)? chatsUpdated,
+    TResult? Function(String chatId, String senderId, String recieverId,
+            ChatMessage message)?
+        sendMessage,
+  }) {
+    return sendMessage?.call(chatId, senderId, recieverId, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadUsers,
+    TResult Function(List<User> users)? usersUpdated,
+    TResult Function()? distract,
+    TResult Function(String chatId, String senderId)? getMessages,
+    TResult Function(List<ChatMessage> messages)? messgesUpdated,
+    TResult Function(String currentUserId)? chatList,
+    TResult Function(List<ChatModel> chats)? chatsUpdated,
+    TResult Function(String chatId, String senderId, String recieverId,
+            ChatMessage message)?
+        sendMessage,
+    required TResult orElse(),
+  }) {
+    if (sendMessage != null) {
+      return sendMessage(chatId, senderId, recieverId, message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadUsers value) loadUsers,
+    required TResult Function(UsersUpdated value) usersUpdated,
+    required TResult Function(Distract value) distract,
+    required TResult Function(GetMessages value) getMessages,
+    required TResult Function(MessageUpdated value) messgesUpdated,
+    required TResult Function(GetListChat value) chatList,
+    required TResult Function(ChatsUpdated value) chatsUpdated,
+    required TResult Function(SendMessage value) sendMessage,
+  }) {
+    return sendMessage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadUsers value)? loadUsers,
+    TResult? Function(UsersUpdated value)? usersUpdated,
+    TResult? Function(Distract value)? distract,
+    TResult? Function(GetMessages value)? getMessages,
+    TResult? Function(MessageUpdated value)? messgesUpdated,
+    TResult? Function(GetListChat value)? chatList,
+    TResult? Function(ChatsUpdated value)? chatsUpdated,
+    TResult? Function(SendMessage value)? sendMessage,
+  }) {
+    return sendMessage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadUsers value)? loadUsers,
+    TResult Function(UsersUpdated value)? usersUpdated,
+    TResult Function(Distract value)? distract,
+    TResult Function(GetMessages value)? getMessages,
+    TResult Function(MessageUpdated value)? messgesUpdated,
+    TResult Function(GetListChat value)? chatList,
+    TResult Function(ChatsUpdated value)? chatsUpdated,
+    TResult Function(SendMessage value)? sendMessage,
+    required TResult orElse(),
+  }) {
+    if (sendMessage != null) {
+      return sendMessage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SendMessage implements UserEvent {
+  const factory SendMessage(final String chatId, final String senderId,
+      final String recieverId, final ChatMessage message) = _$SendMessageImpl;
+
+  String get chatId;
+  String get senderId;
+  String get recieverId;
+  ChatMessage get message;
+  @JsonKey(ignore: true)
+  _$$SendMessageImplCopyWith<_$SendMessageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

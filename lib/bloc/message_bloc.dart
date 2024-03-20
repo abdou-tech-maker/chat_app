@@ -5,6 +5,7 @@ import 'package:chat_task/bloc/states/message_state.dart';
 import 'package:chat_task/repository/chat_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../models/chatMessage_model.dart';
 import 'events/user_event.dart';
 
 class MessageBloc extends Bloc<UserEvent, MessageState> {
@@ -12,11 +13,12 @@ class MessageBloc extends Bloc<UserEvent, MessageState> {
   StreamSubscription? _messageSubscription;
 
   MessageBloc() : super(MessageLoading()) {
-    on<GetMessages>(_onGetMessage);
+    on<GetMessages>(_onGetMessages);
     on<MessageUpdated>(_onMessagesUpdatedEvent);
+    on<SendMessage>(_onSendMessage);
   }
 
-  void _onGetMessage(GetMessages event, Emitter<MessageState> emit) {
+  void _onGetMessages(GetMessages event, Emitter<MessageState> emit) {
     log('Load Messages event');
     emit(MessageLoading());
     _messageSubscription?.cancel();
@@ -41,5 +43,28 @@ class MessageBloc extends Bloc<UserEvent, MessageState> {
   Future<void> close() {
     _messageSubscription?.cancel();
     return super.close();
+  }
+
+  Future<void> _onSendMessage(
+      SendMessage event, Emitter<MessageState> emit) async {
+    try {
+      final currentState = state;
+      if (currentState is MessageLoaded) {
+        // Optimistically add the message to the current list of messages
+        final updatedMessages = List<ChatMessage>.from(currentState.messages)
+          ..add(event.message);
+        emit(MessageLoaded(updatedMessages));
+      }
+      emit(MessageSending());
+      await chatRepository.sendMessage(
+          chatId: event.chatId,
+          message: event.message,
+          recieverId: event.recieverId,
+          senderId: event.senderId);
+
+      // emit(MessageSent());
+    } catch (e) {
+      emit(MessageSendError(e.toString()));
+    }
   }
 }

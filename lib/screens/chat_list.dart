@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:chat_task/bloc/chat_bloc.dart';
 import 'package:chat_task/bloc/states/chat_states.dart';
 import 'package:chat_task/helpers/chat_item.dart';
@@ -43,6 +45,7 @@ class _ChatListState extends State<ChatList> {
                 itemCount: chats.length,
                 itemBuilder: (context, index) {
                   final chat = chats[index];
+                  log(chat.unreadMessagesCount.toString());
                   return ChatItem(
                     chat: chat,
                     currentUserId: widget.currentUserId,

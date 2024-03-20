@@ -18,6 +18,7 @@ class UserItem extends StatelessWidget {
             builder: (context) => ChatScreen(
               user: user,
               chatId: "",
+              currentUserId: user.uid,
             ),
           ),
         );

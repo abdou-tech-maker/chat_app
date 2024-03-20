@@ -20,9 +20,15 @@ class ChatItem extends StatefulWidget {
 }
 
 class _ChatItemState extends State<ChatItem> {
+  UserRepository userRepository = UserRepository();
+  @override
+  void initState() {
+    super.initState();
+    log("${widget.chat.unreadMessagesCount}  ${widget.chat.title}");
+  }
+
   @override
   Widget build(BuildContext context) {
-    UserRepository userRepository = UserRepository();
     return ListTile(
       title: Text(
         widget.chat.title,
@@ -48,6 +54,7 @@ class _ChatItemState extends State<ChatItem> {
           builder: (context) => ChatScreen(
             user: receiver,
             chatId: widget.chat.id,
+            currentUserId: widget.currentUserId,
           ),
         ));
       },

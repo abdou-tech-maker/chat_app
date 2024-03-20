@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:chat_task/bloc/message_bloc.dart';
 import 'package:chat_task/helpers/chat_text_field.dart';
 import 'package:chat_task/helpers/user_header.dart';
@@ -8,31 +6,38 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/events/user_event.dart';
-import '../constantes/constantes.dart';
 import '../models/chatMessage_model.dart';
 import '../models/user_model.dart';
 import 'chat_messages.dart';
 
 class ChatScreen extends StatefulWidget {
-  const ChatScreen({super.key, required this.user, required this.chatId});
+  const ChatScreen(
+      {super.key,
+      required this.user,
+      required this.chatId,
+      required this.currentUserId});
   final User user;
   final String chatId;
+  final String currentUserId;
   @override
   State<ChatScreen> createState() => _ChatScreenState();
 }
 
 class _ChatScreenState extends State<ChatScreen> {
   void _handleMessageSend(String message) {
-    dummyChatMessages.add(ChatMessage(
-      recieverId: "6",
-      senderId: "user_2",
-      text: message,
-      time: Timestamp.fromDate(DateTime.now()),
-      isMe: true,
-      status: true,
-    ));
-    log("Message to send: $message");
-    setState(() {});
+    if (message.isNotEmpty) {
+      ChatMessage newMessage = ChatMessage(
+        senderId: widget.currentUserId,
+        recieverId: widget.user.uid,
+        text: message,
+        time: Timestamp.now(),
+        isMe: true,
+        status: true,
+      );
+      BlocProvider.of<MessageBloc>(context).add(UserEvent.sendMessage(
+          widget.chatId, widget.currentUserId, widget.user.uid, newMessage));
+      setState(() {});
+    }
   }
 
   @override
@@ -53,9 +58,9 @@ class _ChatScreenState extends State<ChatScreen> {
           child: Column(
             children: [
               MessageList(
-                recieverId: widget.user.uid,
-                chatId: widget.chatId,
-              ),
+                  recieverId: widget.user.uid,
+                  chatId: widget.chatId,
+                  currentUserId: widget.currentUserId),
               ChatTextFieldWidget(
                 hint: "Send Message",
                 onChange: _handleMessageSend,

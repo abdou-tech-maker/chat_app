@@ -19,4 +19,6 @@ abstract class UserEvent with _$UserEvent {
       MessageUpdated;
   const factory UserEvent.chatList(String currentUserId) = GetListChat;
   const factory UserEvent.chatsUpdated(List<ChatModel> chats) = ChatsUpdated;
+  const factory UserEvent.sendMessage(String chatId, String senderId,
+      String recieverId, ChatMessage message) = SendMessage;
 }

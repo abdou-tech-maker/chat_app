@@ -8,32 +8,12 @@ import '../models/chatMessage_model.dart';
 class ChatRepository {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  // Stream<List<ChatMessage>> getMessages(String chatId, String currentUserId) {
-  //   return _firestore
-  //       .collection('chats')
-  //       .doc(chatId)
-  //       .collection('messages')
-  //       .orderBy('time', descending: true)
-  //       .snapshots(includeMetadataChanges: true)
-  //       .map((snapshot) => snapshot.docs.map((doc) {
-  //             var data = doc.data();
-  //             return ChatMessage(
-  //               recieverId: data['recieverId'],
-  //               senderId: data['senderId'],
-  //               status: data['status'],
-  //               text: data['text'],
-  //               time: data['time'],
-  //               isMe: data['isMe'],
-  //             );
-  //           }).toList());
-  // }
-
   Stream<List<ChatMessage>> getMessages(String chatId, String currentUserId) {
     return _firestore
         .collection('chats')
         .doc(chatId)
         .collection('messages')
-        .orderBy('time', descending: true)
+        .orderBy('time', descending: false)
         .snapshots()
         .map((snapshot) => snapshot.docs.map((doc) {
               return ChatMessage.fromFirestore(doc);
@@ -63,11 +43,37 @@ class ChatRepository {
             }).toList());
   }
 
-  Future<void> sendMessage(String chatId, ChatMessage message) {
-    return _firestore
-        .collection('chats')
-        .doc(chatId)
-        .collection('messages')
-        .add(message.toJson());
+  Future<void> sendMessage(
+      {required String chatId,
+      required ChatMessage message,
+      required String recieverId,
+      required String senderId}) async {
+    final messageCollection =
+        _firestore.collection('chats').doc(chatId).collection('messages');
+    final chatDocument = _firestore.collection('chats').doc(chatId);
+    bool isMe = message.senderId == senderId;
+    await messageCollection.add({
+      'senderId': senderId,
+      'recieverId': recieverId,
+      'text': message.text,
+      'time': Timestamp.now(),
+      'isMe': isMe,
+      'status': false
+    });
+
+    await chatDocument.update({
+      'lastMessageTime': Timestamp.now(),
+    });
+  }
+
+  Future<void> createNewChat(List<String> participantIds, String title) async {
+    final FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+    await firestore.collection('chats').add({
+      'participants': participantIds,
+      'title': title,
+      'lastMessageTime': Timestamp.now(),
+      'unreadMessageCount': 0,
+    });
   }
 }
