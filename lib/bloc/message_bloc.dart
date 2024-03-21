@@ -50,7 +50,6 @@ class MessageBloc extends Bloc<UserEvent, MessageState> {
     try {
       final currentState = state;
       if (currentState is MessageLoaded) {
-        // Optimistically add the message to the current list of messages
         final updatedMessages = List<ChatMessage>.from(currentState.messages)
           ..add(event.message);
         emit(MessageLoaded(updatedMessages));

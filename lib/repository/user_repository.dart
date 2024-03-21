@@ -37,29 +37,4 @@ class UserRepository {
 
     return User.fromFirestore(docSnapshot);
   }
-  // Stream<User> getReceiverInfo(
-  //     List<String> participants, String currentUserId) {
-  //   final receiverId = participants.firstWhere((id) => id != currentUserId);
-  //   return FirebaseFirestore.instance
-  //       .collection('users')
-  //       .doc(receiverId)
-  //       .snapshots()
-  //       .map((snapshot) {
-  //     // Check for null data before proceeding with casting.
-  //     var data = snapshot.data() ?? {}; // Use an empty map as a fallback.
-
-  //     // Assuming you have a constructor or method in your User class to handle default values properly.
-  //     return User(
-  //       uid: data['uid'] ?? '',
-  //       name: data['name'] ?? '',
-  //       email: data['email'] ?? '',
-  //       imageUrl: data['imageUrl'] ?? '',
-  //       // Handle the Timestamp conversion with a null check.
-  //       lastSeen: data.containsKey('lastSeen')
-  //           ? (data['lastSeen'] as Timestamp).toDate()
-  //           : DateTime.now(),
-  //       isOnline: data['isOnline'] ?? false,
-  //     );
-  //   });
-  // }
 }
