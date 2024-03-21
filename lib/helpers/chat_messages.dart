@@ -32,6 +32,20 @@ class _MessageListState extends State<MessageList> {
           return const Expanded(
               child: Center(child: CircularProgressIndicator()));
         } else if (state is MessageLoaded) {
+          if (state.messages.isEmpty) {
+            return const Expanded(
+              child: Padding(
+                padding: EdgeInsets.all(20),
+                child: Center(
+                  child: Text(
+                    'No messages yet. Start a conversation!',
+                    style: TextStyle(color: Colors.black, fontSize: 16),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+            );
+          }
           return Expanded(
             child: ListView.builder(
               reverse: true,

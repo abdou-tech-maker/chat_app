@@ -73,7 +73,18 @@ class _ChatListState extends State<ChatList> {
               return const Center(child: CircularProgressIndicator());
             } else if (state is ChatLoaded) {
               final chats = state.chats;
-
+              if (chats.isEmpty) {
+                return const Padding(
+                  padding: EdgeInsets.all(20),
+                  child: Center(
+                    child: Text(
+                      'No chats yet. Start a conversation!',
+                      style: TextStyle(color: Colors.black, fontSize: 16),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                );
+              }
               return ListView.separated(
                 separatorBuilder: (context, index) {
                   return const SizedBox();
