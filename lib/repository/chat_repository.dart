@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:chat_task/models/chat_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 
 import '../models/chatMessage_model.dart';
 
@@ -115,6 +116,20 @@ class ChatRepository {
       }
     } else {
       log("Error: Chat document data is null.");
+    }
+  }
+
+  Future<void> deleteChat(BuildContext context, String chatId) async {
+    try {
+      await FirebaseFirestore.instance.collection('chats').doc(chatId).delete();
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Chat deleted successfully')),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Failed to delete chat')),
+      );
     }
   }
 }

@@ -39,14 +39,27 @@ class _ChatItemState extends State<ChatItem> {
         style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
       ),
       subtitle: Text(timeago.format(widget.chat.lastMessageTime.toDate())),
-      trailing: unreadCount > 0
-          ? CircleAvatar(
-              radius: 12,
-              backgroundColor: Colors.red,
-              foregroundColor: Colors.white,
-              child: Text(unreadCount.toString()),
-            )
-          : const SizedBox(width: 24, height: 24),
+      trailing: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          unreadCount > 0
+              ? CircleAvatar(
+                  radius: 12,
+                  backgroundColor: Colors.red,
+                  foregroundColor: Colors.white,
+                  child: Text(unreadCount.toString()),
+                )
+              : const SizedBox(width: 24, height: 24),
+          const SizedBox(width: 8),
+          IconButton(
+            icon:
+                const Icon(Icons.delete, color: Color.fromARGB(255, 4, 78, 46)),
+            onPressed: () {
+              chatRepository.deleteChat(context, widget.chat.id);
+            },
+          ),
+        ],
+      ),
       onTap: () async {
         User receiver = await userRepository.getReceiverInfo(
             widget.chat.participants, widget.currentUserId);
